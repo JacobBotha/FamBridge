@@ -1,0 +1,57 @@
+{
+    "Name": "Jacob Botha",
+    "Profile": null,
+    "Friends": [
+        {
+            "Id": 1,
+            "Name": "James Doe",
+            "Profile": "profile"
+        },{
+            "Id": 2,
+            "Name": "John Doe",
+            "Profile": "profile"
+        },{
+            "Id": 3,
+            "Name": "Jill Doe",
+            "Profile": null
+        },{
+            "Id": 4,
+            "Name": "Tim Doe",
+            "Profile": null
+        },{
+            "Id": 5,
+            "Name": "Tom Doe",
+            "Profile": null
+        },{
+            "Id": 6,
+            "Name": "Sheryl Doe",
+            "Profile": null
+        },{
+            "Id": 7,
+            "Name": "James Doe",
+            "Profile": null
+        },{
+            "Id": 8,
+            "Name": "James Doe",
+            "Profile": null
+        },{
+            "Id": 9,
+            "Name": "James Doe",
+            "Profile": null
+        },{
+            "Id": 10,
+            "Name": "James Doe",
+            "Profile": null
+        }],
+    "Events" : [{
+        "Name": "Going shopping",
+        "Time": "6:00pm 21/10/2021",
+        "CreatedBy": 10,
+        "Going" :[10]
+    },{
+        "Name": "Playing Sport",
+        "Time": "5:00pm 20/10/2021",
+        "CreatedBy": 9,
+        "Going" :[10, 9, 7]
+    }]
+}

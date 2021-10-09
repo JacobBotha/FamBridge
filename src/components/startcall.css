@@ -1,0 +1,49 @@
+button{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.button-voice {
+    background: #FFFFFF;
+    border: 1px solid rgba(34, 34, 34, 0.4);
+    border-radius: 100px;
+
+    width: 235px;
+    height: 48px
+}
+
+.button-call {
+    width: 235px;
+    height: 48px;
+
+    background: #FFFFFF;
+    border: 1px solid rgba(34, 34, 34, 0.4);
+    border-radius: 100px;
+
+}
+
+.button-conents {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+
+    position: absolute;
+    width: 132px;
+    height: 24px;
+    left: 52px;
+    top: 11px;
+}
+
+.search {
+    width: 508px;
+    height: 48px;
+
+    background: #E5E5E5;
+    border: 1px solid #E5E5E5;
+    border-radius: 100px;
+}
+
