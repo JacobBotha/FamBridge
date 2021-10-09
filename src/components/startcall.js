@@ -37,10 +37,10 @@ export default class StartCall extends Component {
                         />
                         {/* <input type="text" className="search"></input> */}
                     </Box>
-                    <Box sx={{ p: 5, height:"30vh"}}>
+                    <div className="family-box">
                         <h2>Family</h2>
                         <FriendList friends={this.state.friends}></FriendList>
-                    </Box>
+                    </div>
                     <Box sx={{ p: 5, height:"30vh"}}>
                         <h2>Friends</h2>
                         <FriendList friends={this.state.friends}></FriendList>

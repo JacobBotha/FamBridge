@@ -4,6 +4,12 @@ button{
     align-items: center;
 }
 
+.family-box { 
+    padding: 5; 
+    height:"30vh";
+    background-color: rgb(235, 215, 35);
+}
+
 
 .button-voice {
     background: #FFFFFF;
