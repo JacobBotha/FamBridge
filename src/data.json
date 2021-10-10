@@ -5,53 +5,83 @@
         {
             "Id": 1,
             "Name": "James Doe",
-            "Profile": "profile"
+            "Profile": "profile",
+            "Relationship" : "Son"
         },{
             "Id": 2,
             "Name": "John Doe",
-            "Profile": "profile"
+            "Profile": "profile",
+            "Relationship" : "Son"
         },{
             "Id": 3,
             "Name": "Jill Doe",
-            "Profile": null
+            "Profile": null,
+            "Relationship" : "Grandson"
         },{
             "Id": 4,
             "Name": "Tim Doe",
-            "Profile": null
+            "Profile": null,
+            "Relationship" : "Friend"
         },{
             "Id": 5,
             "Name": "Tom Doe",
-            "Profile": null
+            "Profile": null,
+            "Relationship" : "Friend"
         },{
             "Id": 6,
             "Name": "Sheryl Doe",
-            "Profile": null
+            "Profile": null,
+            "Relationship" : "Sister"
         },{
             "Id": 7,
             "Name": "James Doe",
-            "Profile": null
+            "Profile": null,
+            "Relationship" : "Friend"
         },{
             "Id": 8,
             "Name": "James Doe",
-            "Profile": null
+            "Profile": null,
+            "Relationship" : "Sister"
+
         },{
             "Id": 9,
             "Name": "James Doe",
-            "Profile": null
+            "Profile": null,
+            "Relationship" : "Sister"
+
         },{
             "Id": 10,
             "Name": "James Doe",
-            "Profile": null
+            "Profile": null,
+            "Relationship" : "Sister"
+
         }],
     "Events" : [{
-        "Name": "Going shopping",
-        "Time": "6:00pm 21/10/2021",
-        "CreatedBy": 10,
-        "Going" :[10]
-    },{
-        "Name": "Playing Sport",
-        "Time": "5:00pm 20/10/2021",
-        "CreatedBy": 9,
-        "Going" :[10, 9, 7]
-    }]
+            "Name": "Going shopping",
+            "Time" :"2021-10-10T17:00:00",
+            "CreatedBy": 10,
+            "Going" :[10]
+        },{
+            "Name": "Playing Sport",
+            "Time" :"2021-10-20T17:00:00",
+            "CreatedBy": 9,
+            "Going" :[10, 9, 7]
+        },{
+            "Name": "Movie Night",
+            "Time" :"2021-10-10T19:00:00",
+            "CreatedBy" : 5,
+            "Going" : [5, 4, 1, 6]
+        }], 
+    "Status" : [{
+            "Name" : "Finished Puzzle",
+            "CreatedBy" : 10,
+            "Time" :"2021-10-09T03:24:00",
+            "Photo" : null
+        }, {
+            "Name" : "Made new recipe",
+            "CreatedBy" : 4,
+            "Time" :"2021-10-10T10:24:00",
+            "Photo" : "images/recipe.jpg"
+        }
+    ]
 }

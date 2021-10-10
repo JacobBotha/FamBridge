@@ -1,72 +1,60 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import StartCall from './startcall.js';
 import Grid from '@mui/material/Grid';
+import NewsletterBar from './NewsletterBar.js';
 import Newsletter from './Newsletter';
 import Calendar from './Calendar';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+import Breadcrumb from './Breadcrumb.js';
+
 import myData from '../data.json';
 
-export default class Layout extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { current: 'newsletter',
-          name: myData.Name,
-          profile: myData.Profile,
-          friends: myData.Friends,
-          events: myData.Events
-      };
-    }
+const leftSideStyle = {
+  "background": "#C4C4C4",
+  "border": "1px solid #C4C4C4",
+  "box-sizing": "border-box",
+  "height": "100vh",
+}
 
-    leftPanel() {
-      if (this.state.current === 'newsletter') {
-        return <Newsletter events={this.state.events}></Newsletter>;
+export default function Layout(props) {
+    const [current, setCurrent] = useState("Newsletter");
+    const [name, setName] = useState(myData.Name);
+    const [profile, setProfile] = useState(myData.Profile);
+    const [friends, setFriends] = useState(myData.Friends);
+    const [events, setEvents] = useState(myData.Events);
+    const [status, setStatus] = useState(myData.Status);
+
+    const leftPanel = function() {
+      if (current === 'Newsletter') {
+        return <Newsletter events={events} status={status}></Newsletter>;
       }
 
-      if (this.state.current === 'calendar') {
-        return <Calendar  events={this.state.events}></Calendar>;
+      if (current === 'Calendar') {
+        return <Calendar  events={events}></Calendar>;
       }
     }
 
-    setNewsletter() {
-      this.setState({
-        curent : 'newsletter'
-      });
+    const handleCrumbChange = (crumb) => {
+      if(crumb === 'Calendar') {
+        setCurrent("Calendar");
+      } else {
+        setCurrent("Newsletter");
+      }
     }
 
-    setCalendar() {
-      this.setState({
-        curent : 'calendar'
-      });
-    }
-
-    render () {
-        return (
-            <div style={{ width: '100%' }}>
-              <Grid container spacing={0} direction="row">
-                <Grid item xs={8}  sx={{ bgcolor: 'primary.light' }}>
-                  <AppBar position="static">
-                      <Toolbar style={{ 
-                          float       : 'none', 
-                          width       : '200px',
-                          marginLeft  : 'auto',
-                          marginRight : 'auto'
-                      }}>
-                      <Typography variant="h6" component="div" sx={{ flexGrow: 1}} position="centred">
-                          Newsletter
-                      </Typography>
-                      </Toolbar>
-                  </AppBar>
-                  {this.leftPanel()}
-                </Grid>
-                <Grid item xs={4}>
-                  <StartCall friends={this.state.friends}></StartCall>
-                </Grid>
-              </Grid>
-            </div>
-          );
-    }
+    return (
+        <div style={{ width: '100%' }}>
+          <Grid container spacing={0} direction="row">
+            <Grid item xs={8} style={leftSideStyle}>
+              <NewsletterBar></NewsletterBar>
+              <Breadcrumb handleCrumbChange={handleCrumbChange}/>
+              {leftPanel()}
+            </Grid>
+            <Grid item xs={4}>
+              <StartCall friends={friends}></StartCall>
+            </Grid>
+          </Grid>
+        </div>
+      );
 }
 

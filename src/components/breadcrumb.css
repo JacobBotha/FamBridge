@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+
+    width: 696px;
+    height: 40px;
+    left: 59px;
+    top: 104px;
+}
+
+.crumb {
+    position: static;
+    width: 158px;
+    height: 40px;
+    left: 128px;
+    top: 0px;
+
+    border: 2px solid #000000;
+    border-radius: 100px;
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px 24px;
+
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.crumb-deselected {
+    background: #FFFFFF;
+}
+
+.crumb-selected {
+    background: #222222;
+}
