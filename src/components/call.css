@@ -1,0 +1,25 @@
+.topic-box {
+    position : fixed;
+    width : 300px;
+    height: 500px;
+    right: 20px;
+    top: 20px
+}
+
+.self-camera {
+    position : fixed;
+    width : 400px;
+    left: 0px;
+    top: 0px;
+}
+
+.call-menu {
+    position: fixed;
+    width: 100vw;
+    height: 100px;
+    bottom: 0px;
+
+    background:#636060;
+    align-items: center;
+    justify-content: center;
+}

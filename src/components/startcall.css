@@ -53,3 +53,14 @@ button{
     border-radius: 100px;
 }
 
+.buttons-container {
+    position:fixed;
+    bottom: 20px;
+    /* width: 100%; */
+
+    /* display: flex;
+    justify-content: center; */
+    /* margin: 0 auto; */
+
+}
+

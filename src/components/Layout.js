@@ -6,6 +6,7 @@ import NewsletterBar from './NewsletterBar.js';
 import Newsletter from './Newsletter';
 import Calendar from './Calendar';
 import Breadcrumb from './Breadcrumb.js';
+import Call from './call.js';
 
 import myData from '../data.json';
 
@@ -22,17 +23,20 @@ export default function Layout(props) {
     const [profile, setProfile] = useState(myData.Profile);
     const [friends, setFriends] = useState(myData.Friends);
     const [events, setEvents] = useState(myData.Events);
-    const [status, setStatus] = useState(myData.Status);
+    const [statuses, setStatuses] = useState(myData.Status);
+    const [topics, setTopics] = useState(myData.Topics);
+    const [startCall, setStartCall] = useState(false);
+    const [callFriends, setCallFriends] = useState([]);
 
     const leftPanel = function() {
       if (current === 'Newsletter') {
-        return <Newsletter events={events} status={status}></Newsletter>;
+        return <Newsletter events={events} status={statuses}></Newsletter>;
       }
 
       if (current === 'Calendar') {
         return <Calendar  events={events}></Calendar>;
       }
-    }
+    };
 
     const handleCrumbChange = (crumb) => {
       if(crumb === 'Calendar') {
@@ -40,9 +44,39 @@ export default function Layout(props) {
       } else {
         setCurrent("Newsletter");
       }
+    };
+
+    const handleStartCall = (friends) => {
+      setCallFriends(friends);
+      setStartCall(true);
+    };
+
+    const handleEndCall = () => {
+      setCallFriends([]);
+      setStartCall(false);
+    };
+
+    const callActivites = () => {
+      const activites = [];
+      var friendId = [].concat(callFriends).map(({Id})=>Id);
+      for(let status of statuses) {
+        if (friendId.indexOf(status.CreatedBy) != -1) {
+          activites.push(status);
+        }
+      }
+
+      return activites;
     }
 
-    return (
+
+    const callPage = () => {
+      return (
+        <Call handleEndCall={handleEndCall} topics={topics} friends={callFriends} activities={callActivites()}></Call>
+      )
+    }
+
+    const mainPage = () => {
+      return (
         <div style={{ width: '100%' }}>
           <Grid container spacing={0} direction="row">
             <Grid item xs={8} style={leftSideStyle}>
@@ -51,10 +85,25 @@ export default function Layout(props) {
               {leftPanel()}
             </Grid>
             <Grid item xs={4}>
-              <StartCall friends={friends}></StartCall>
+              <StartCall friends={friends} handleStartCall={handleStartCall}></StartCall>
             </Grid>
           </Grid>
         </div>
       );
+    }
+
+    const pageSwitcher = () => {
+      if (startCall == false) {
+        return mainPage();
+      }
+
+      return callPage();
+    }
+
+    return (
+      <div>
+        {pageSwitcher()}
+      </div>
+    )
 }
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './newsletter.css';
 
 export default class Newsletter extends Component {
     constructor(props) {
@@ -32,13 +33,37 @@ export default class Newsletter extends Component {
         for (let event of this.state.items) {
             let date = new Date(event.Time);
             if (date.getDate() != currentDate) {
-                tableItemsHtml.push(<h2>{date.getUTCDate() + "/" + date.getMonth()}</h2>)
+                //This is for the date
+                tableItemsHtml.push(
+                    this.dateItem(date.getUTCDate() + "/" + date.getMonth())
+                );
                 currentDate = date.getDate();
             }
-            tableItemsHtml.push(<h2>{event.Name +  " at " + this.timeString(event.Time)}</h2>)
+            //This is for the event item
+            tableItemsHtml.push(
+                this.whiteItem(event.Name, event.Time)
+            );
         }
 
         return tableItemsHtml;
+    }
+
+    dateItem(date) {
+        return (
+            <div className="">{date}</div>
+        );
+    }
+
+    grayItem(name, time) {
+        return (
+            <div className="newsletter-item newsletter-gray"><h2>{name +  " at " + this.timeString(time)}</h2></div>
+        );
+    }
+
+    whiteItem(name, time) {
+        return (
+            <div className="newsletter-item newsletter-white"><h2>{name +  " at " + this.timeString(time)}</h2></div>
+        );
     }
 
     render () {

@@ -4,57 +4,66 @@
     "Friends": [
         {
             "Id": 1,
-            "Name": "James Doe",
-            "Profile": "profile",
-            "Relationship" : "Son"
+            "Name": "Jane Doe",
+            "Profile": "/profilePictures/profile1.jpg",
+            "Relationship" : "Sister",
+            "Interests" : ["Outlander (tv show)"]
         },{
             "Id": 2,
             "Name": "John Doe",
             "Profile": "profile",
-            "Relationship" : "Son"
+            "Relationship" : "Son",
+            "Interests" : ["Outlander (tv show)"]
         },{
             "Id": 3,
             "Name": "Jill Doe",
             "Profile": null,
-            "Relationship" : "Grandson"
+            "Relationship" : "Grandson",
+            "Interests" : ["Skating", "Cooking"]
         },{
             "Id": 4,
             "Name": "Tim Doe",
             "Profile": null,
-            "Relationship" : "Friend"
+            "Relationship" : "Friend",
+            "Interests" : ["Skating", "Dancing", "Outlander (tv show)"]
         },{
             "Id": 5,
             "Name": "Tom Doe",
             "Profile": null,
-            "Relationship" : "Friend"
+            "Relationship" : "Friend",
+            "Interests" : ["Skating", "Apex Legends"]
         },{
             "Id": 6,
             "Name": "Sheryl Doe",
             "Profile": null,
-            "Relationship" : "Sister"
+            "Relationship" : "Sister",
+            "Interests" : ["Skating", "Boxing"]
         },{
             "Id": 7,
             "Name": "James Doe",
             "Profile": null,
-            "Relationship" : "Friend"
+            "Relationship" : "Friend",
+            "Interests" : ["Skating", "Mario Kart"]
         },{
             "Id": 8,
             "Name": "James Doe",
             "Profile": null,
-            "Relationship" : "Sister"
+            "Relationship" : "Sister",
+            "Interests" : ["Dancing"]
 
         },{
             "Id": 9,
             "Name": "James Doe",
             "Profile": null,
-            "Relationship" : "Sister"
+            "Relationship" : "Sister",
+            "Interests" : ["Cooking"]
 
         },{
             "Id": 10,
             "Name": "James Doe",
             "Profile": null,
-            "Relationship" : "Sister"
-
+            "Relationship" : "Sister",
+            "Interests" : ["Cooking"]
         }],
     "Events" : [{
             "Name": "Going shopping",
@@ -83,5 +92,10 @@
             "Time" :"2021-10-10T10:24:00",
             "Photo" : "images/recipe.jpg"
         }
+    ],
+
+    "Topics" : [
+        "If you could change one thing about your life what would it be?",
+        "What is your favourite food?"
     ]
 }
