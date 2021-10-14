@@ -20,18 +20,14 @@ export default function StartCall(props) {
         props.handleStartCall(selected);
     }
 
-    const handleSelectFriend = (friend) => {
-        if(selected.length < 1) {
-            setSelected([friend]);
-        } else {
-            setSelected(oldSelected => [...oldSelected, friend]);
-        }
+    const handleSelected = (selected) => {
+        setSelected(selected);
     }
 
     return (
-            <div style={{height: "100vh"}}>
+            <div>
                 <div style={{ padding: "10px", top:"10px" }}>
-                    <TextField
+                    {/* <TextField
                         id="input-with-icon-textfield"
                         label="Search"
                         InputProps={{
@@ -43,33 +39,18 @@ export default function StartCall(props) {
                         }}
                         variant="standard"
                         fullWidth 
-                    />
-                    {/* <input type="text" className="search"></input> */}
+                    /> */}
+                    <input type="text" className="search"></input>
                 </div>
                 <div className="family-box">
-                    <h2>Family</h2>
-                    <FriendList handleSelectFriend={handleSelectFriend} friends={friends}></FriendList>
+                    <FriendList handleSelected={handleSelected} friends={friends}></FriendList>
                 </div>
                 
                 <div className="buttons-container">
-                    <Grid
-                        container
-                        direction="row"
-                        justifyContent="center"
-                        alignItems="center"
-                        spacing={5}
-                        className="buttons-container"
-                        >
-                        <Grid item>
-                            <button className="button-call" onClick={handleStartCall}><VoiceChatIcon></VoiceChatIcon>Call</button>
+                    <button className={selected.length >= 1 ? "button-call-active": "button-call"} onClick={handleStartCall}><VoiceChatIcon></VoiceChatIcon>Call</button>
                             {/* <Button sx={{width:200}} variant="contained">Call</Button> */}
-                        </Grid>
-                        <Grid item>
-                            <button className="button-voice"><MicIcon></MicIcon>Voice Message</button>
+                    <button className="button-voice"><MicIcon></MicIcon>Voice Message</button>
                             {/* <Button sx={{width:200}} variant="contained">Voice Message</Button> */}
-                        </Grid>
-                    </Grid>
-
                 </div>
             </div>
     )

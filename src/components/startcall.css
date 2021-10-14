@@ -5,9 +5,11 @@ button{
 }
 
 .family-box { 
-    padding: 5; 
-    height:"30vh";
-    background-color: rgb(235, 215, 35);
+    position: absolute;
+    top: 112px;
+    left: 12%; 
+    height: calc(90% - 112px);
+    overflow: auto;
 }
 
 
@@ -23,10 +25,23 @@ button{
 .button-call {
     width: 235px;
     height: 48px;
+    margin-right: 20px;
 
     background: #FFFFFF;
     border: 1px solid rgba(34, 34, 34, 0.4);
     border-radius: 100px;
+
+}
+
+.button-call-active {
+    width: 235px;
+    height: 48px;
+    margin-right: 20px;
+
+    background: #32428b;
+    border: 1px solid rgba(34, 34, 34, 0.4);
+    border-radius: 100px;
+    color: white;
 
 }
 
@@ -35,7 +50,6 @@ button{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 0px;
 
     position: absolute;
     width: 132px;
@@ -45,8 +59,11 @@ button{
 }
 
 .search {
-    width: 508px;
+    position:absolute;
+    width: 90%;
+    top: 24px;
     height: 48px;
+    left: 5%;
 
     background: #E5E5E5;
     border: 1px solid #E5E5E5;
@@ -54,9 +71,9 @@ button{
 }
 
 .buttons-container {
-    position:fixed;
-    bottom: 20px;
-    /* width: 100%; */
+    position: absolute;
+    top: 90%;
+    left: calc(50% - 245px);
 
     /* display: flex;
     justify-content: center; */

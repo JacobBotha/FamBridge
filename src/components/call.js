@@ -5,6 +5,7 @@ import './call.css';
 
 export default function Call(props) {
     const [topicCount, setTopicCount] = useState(1);
+    console.log(props.activities)
 
     const endCall = () => {
         return props.handleEndCall();
@@ -29,11 +30,17 @@ export default function Call(props) {
                     <h2>Conversation Starter</h2>
                     <p>{props.topics[topicCount-1]}</p>
                     { props.friends.map((friend) => {
+                        let friendActivities = [];
+                        props.activities.map((activity) => {
+                            if (activity.CreatedBy === friend.Id) {
+                                friendActivities.push( activity);
+                            }
+                        });
                         return (
                             <div>
                                 <h4>{friend.Name}</h4>
                                 <p>Interests: {friend.Interests.join(", ")}</p>
-                                <p>{ props.activities.length >= 1 ? "Recent Activities: " : ""}{props.activities.map((activity) => activity.Name)}</p> 
+                                <p>{ (friendActivities.length >= 1) ? "Recent Activities: " : ""}{friendActivities.map((activity) => activity.Name)}</p> 
                             </div>
                         )
                     })}

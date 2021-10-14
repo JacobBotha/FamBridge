@@ -1,0 +1,18 @@
+h3 {
+    text-align: center;
+}
+
+.friend-list {
+    width: 90%;
+}
+
+.friend-selected {
+    border: 8px solid #1D77FF;
+    width: 124px;
+    height: 124px;
+}
+
+.friend-unselected {
+    width: 140px;
+    height: 140px;
+}

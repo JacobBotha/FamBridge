@@ -15,6 +15,7 @@ const leftSideStyle = {
   "border": "1px solid #C4C4C4",
   "box-sizing": "border-box",
   "height": "100vh",
+  "width" : "60vw"
 }
 
 export default function Layout(props) {
@@ -77,17 +78,15 @@ export default function Layout(props) {
 
     const mainPage = () => {
       return (
-        <div style={{ width: '100%' }}>
-          <Grid container spacing={0} direction="row">
-            <Grid item xs={8} style={leftSideStyle}>
+        <div style={{ width: '100%', height: "100%" }}>
+            <div style={leftSideStyle}>
               <NewsletterBar></NewsletterBar>
               <Breadcrumb handleCrumbChange={handleCrumbChange}/>
               {leftPanel()}
-            </Grid>
-            <Grid item xs={4}>
+            </div>
+            <div style={{position: "absolute", width: "40%", height:"100%", right: "0px", top:"0px"}}>
               <StartCall friends={friends} handleStartCall={handleStartCall}></StartCall>
-            </Grid>
-          </Grid>
+            </div>
         </div>
       );
     }
