@@ -1,15 +1,36 @@
+import { grey } from '@mui/material/colors';
 import React, { Component } from 'react';
 import './newsletter.css';
+
+
+const today = new Date().toJSON();
+const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+const getLastWeek = () => {
+  var today = new Date();
+  var lastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7);
+  return lastWeek;
+}
+
+const isToday = (someDate, offset = 0) => {
+  const today = new Date()
+  return someDate.getDate() == today.getDate() - offset &&
+    someDate.getMonth() == today.getMonth() &&
+    someDate.getFullYear() == today.getFullYear()
+}
 
 export default class Newsletter extends Component {
     constructor(props) {
         super(props);
+        this.friends = props.friends;
         const items = []
         props.status.map(s => {
             s["isStatus"] = true;
             return (items.push(s));
         });
         props.events.map(e => {
+            e["Time"] = e["CreatedOn"];
             e["isStatus"] = false;
             return (items.push(e));
         });
@@ -29,48 +50,123 @@ export default class Newsletter extends Component {
 
     tableItems() {
         let tableItemsHtml = []
-        let currentDate = null
+        let greyWhiteBox = [];
+        let currentDate = new Date().getDate();
+
+        let isWhite = false;
         for (let event of this.state.items) {
             let date = new Date(event.Time);
             if (date.getDate() != currentDate) {
                 //This is for the date
                 tableItemsHtml.push(
-                    this.dateItem(date.getUTCDate() + "/" + date.getMonth())
+                    <div class="greyWhiteBoxes">
+                        {greyWhiteBox}
+                    </div>
+                );
+                greyWhiteBox = []
+                isWhite = false;
+
+                tableItemsHtml.push(
+                    this.dateItem(date)
                 );
                 currentDate = date.getDate();
             }
             //This is for the event item
-            tableItemsHtml.push(
-                this.whiteItem(event.Name, event.Time)
-            );
+            if (isWhite) {
+                greyWhiteBox.push(
+                    this.whiteItem(this.getFriend(event.CreatedBy), event)
+                );
+            } else {
+                greyWhiteBox.push(
+                    this.grayItem(this.getFriend(event.CreatedBy), event)
+                );
+            }
+
+            isWhite = !isWhite;
         }
+
+        tableItemsHtml.push(
+            <div class="greyWhiteBoxes">
+                {greyWhiteBox}
+            </div>
+        );
 
         return tableItemsHtml;
     }
 
+    getFriend(id) {
+        let friend = this.friends.filter((f) => {
+            return f.Id === id;
+        })
+
+        return friend[0];
+    }
+
     dateItem(date) {
+        let dateFormatted = "";
+        if (isToday(date)) {
+            dateFormatted = "Today";
+        } else if (isToday(date, 1)) {
+            dateFormatted = "Yesterday"
+        } else if (date.getTime() > getLastWeek().getTime()) {
+            dateFormatted = days[date.getDay()];
+        } else {
+            dateFormatted = date.getDate() + "-" + months[date.getMonth()];
+        }
         return (
-            <div className="">{date}</div>
+            <h2>{dateFormatted}</h2>
         );
     }
 
-    grayItem(name, time) {
+    grayItem(friend, event) {
         return (
-            <div className="newsletter-item newsletter-gray"><h2>{name +  " at " + this.timeString(time)}</h2></div>
+            <div class="greyLine">
+                <img src={friend.Profile} alt="INSERTIMAGE" id="personImg"/>
+                <div class="personRelationship">
+                    <b>{friend.Name}</b>
+                    <b id="relationshipType">{friend.Relationship} </b>
+                </div>
+                <div class="activity">
+                    {event.Name} <a href ="ADD">{this.timeString( event.Time )}</a>
+                </div>
+                <button>
+                    <img src="/icons/joinButtonIcon.png" id="buttonIcon"/>
+                    <b>Join</b>
+                </button>
+            </div>
         );
     }
 
-    whiteItem(name, time) {
+    whiteItem(friend, event) {
         return (
-            <div className="newsletter-item newsletter-white"><h2>{name +  " at " + this.timeString(time)}</h2></div>
+            <div class="whiteLine">
+                <img src={friend.Profile} alt="INSERTIMAGE" id="personImg"/>
+                <div class="personRelationship">
+                    <b>{friend.Name}</b>
+                    <b id="relationshipType">{friend.Relationship} </b>
+                </div>
+                <div class="activity">
+                    {event.Name} <a href ="ADD">{event.Time}</a>
+                </div>
+                <button>
+                    <img src="/icons/joinButtonIcon.png" id="buttonIcon"/>
+                    <b>Join</b>
+                </button>
+            </div>
         );
     }
 
     render () {
         return (
-            <div>{
-                this.tableItems().map(item => {return item})
-                }
+            <div id="newsletter">
+                <div id="container">
+                    <header>
+                        <h2>Today</h2>
+                        <img src="/icons/edit.png" alt="INSERTIMAGE" id="editImg"/>
+                    </header>
+                    {this.tableItems()}
+                    
+                </div>
             </div>
         )
     }

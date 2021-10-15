@@ -9,3 +9,116 @@
 .newsletter-white {
     background-color: white;
 }
+
+
+body{
+	font-family: 'Inter', sans-serif;
+	margin:0vw;
+	font-size:1.25vw;
+}
+
+#newsletter{
+	background-color: transparent;
+    width: 60vw;
+	margin:0vw;
+
+    position:absolute;
+    left: 0px;
+    top: 140px;
+    bottom: 0px;
+    overflow: auto;
+}
+
+#ignoreTopBanner{
+	height:10%;
+	background-color:blue;
+}
+
+#container{
+	background-color:#F9F9F9;
+	height:80%;
+	width:90%;
+	margin-left:5%;
+	margin-right:5%;
+	border-radius:5%;	
+	padding-top:1vw;
+}
+
+header{
+	display:flex;
+	flex-direction:row;
+}
+	#editImg{
+		width:1.5vw;
+		height:1.5vw;
+		margin-left:75%;
+		margin-top:1vw;
+	}
+
+.whiteLine,.greyLine{
+	display:flex;
+	flex-direction:row;
+	height:5vw;
+	padding-top:2vw;
+}
+
+.whiteLine{
+	background-color:white;
+}
+
+.greyLine{
+	background-color:#E5E5E5;
+}
+
+	#personImg{
+		width:10%;
+		height:100%;
+		border-radius:100%;
+		margin-top:-1vw;
+		margin-left:1.5vw;
+	}
+
+	.personRelationship{
+		display:flex;
+		flex-direction:column;
+		padding-left:2vw;
+	}
+
+	#relationshipType{
+		color:#777777;
+		margin-top:0.5vw;
+		font-weight:normal;
+	}
+
+	.activity{
+		margin-top:1vw;
+		margin-left:3vw;	
+		width:80%;
+	}
+
+a{
+	color:#1D77FF;
+}
+
+h2{
+	padding-left:2vw;
+	font-size:1.5vw;
+}
+
+button{
+	display:flex;
+	flex-direction:row;
+	margin-left:3.5vw;
+	margin-right:2vw;
+	font-size:1.25vw;
+	padding-top:0.7vw;
+	height:3vw;
+	background-color:#FFFFFF;
+	border: 1.5px solid #222222;
+	border-radius:5%;
+	padding-left:2vw;
+	padding-right:2vw;
+}
+
+
+
