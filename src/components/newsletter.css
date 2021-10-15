@@ -120,5 +120,9 @@ button{
 	padding-right:2vw;
 }
 
+.hidden {
+	display: none;
+}
+
 
 
