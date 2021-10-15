@@ -114,7 +114,7 @@ h2{
 	margin-left:3.5vw;
 	margin-right:2vw;
 	font-size:1.25vw;
-	padding-top:0.7vw;
+
 	height:3vw;
 	background-color:#FFFFFF;
 	border: 1.5px solid #222222;
@@ -122,6 +122,10 @@ h2{
 	padding-left:2vw;
 	padding-right:2vw;
 } */
+
+.hidden {
+	display: none;
+}
 
 
 

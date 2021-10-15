@@ -1,5 +1,6 @@
 import { grey } from '@mui/material/colors';
 import React, { Component } from 'react';
+import CreateEvent from './CreateEvent';
 import './newsletter.css';
 import Avatar from '@mui/material/Avatar';
 
@@ -38,7 +39,8 @@ export default class Newsletter extends Component {
         
         items.sort((a, b) => b.Time > a.Time ? 1: -1)
         this.state = {
-            items: items
+            items: items,
+            showModal: false
         }
     }
 
@@ -171,10 +173,12 @@ export default class Newsletter extends Component {
                 <div id="container">
                     <header>
                         <h2>Today</h2>
-                        <img src="/icons/edit.png" alt="INSERTIMAGE" id="editImg"/>
+                        <img onClick={() => this.setState({showModal : true})} src="/icons/edit.png" alt="INSERTIMAGE" id="editImg"/>
                     </header>
                     {this.tableItems()}
-                    
+                    <div className={this.state.showModal ? "" : "hidden"}>
+                        <CreateEvent handleCloseModal={() => this.setState({showModal: false})}></CreateEvent>
+                    </div>
                 </div>
             </div>
         )

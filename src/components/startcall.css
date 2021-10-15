@@ -76,6 +76,7 @@ button{
     border-radius: 100px;
 }
 
+
 .buttons-container {
     position: absolute;
     top: 90%;
@@ -87,7 +88,6 @@ button{
     align-items: center;
     justify-content: space-evenly;
     /* margin: 0 auto; */
-
 }
 
 .button-icon {
