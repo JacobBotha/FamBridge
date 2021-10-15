@@ -4,116 +4,158 @@
     "Friends": [
         {
             "Id": 1,
-            "Name": "Jane Doe",
+            "Name": "Jane",
             "Profile": "/profilePictures/profile1.jpg",
             "Relationship" : "Sister",
             "Interests" : ["Outlander (tv show)"]
         },{
             "Id": 2,
-            "Name": "John Doe",
-            "Profile": "/profilePictures/default.png",
-            "Relationship" : "Son",
+            "Name": "John",
+            "Profile": "/profilePictures/profile2.jpeg",
+            "Relationship" : "friend",
             "Interests" : ["Outlander (tv show)"]
         },{
             "Id": 3,
-            "Name": "Jill Doe",
-            "Profile": "/profilePictures/default.png",
-            "Relationship" : "Grandson",
+            "Name": "Mike",
+            "Profile": "/profilePictures/profile3.jpeg",
+            "Relationship" : "friend",
             "Interests" : ["Skating", "Cooking"]
         },{
             "Id": 4,
-            "Name": "Tim Doe",
-            "Profile": "/profilePictures/default.png",
+            "Name": "Tim",
+            "Profile": "/profilePictures/profile4.jpeg",
             "Relationship" : "Friend",
             "Interests" : ["Skating", "Dancing", "Outlander (tv show)"]
         },{
             "Id": 5,
-            "Name": "Tom Doe",
-            "Profile": "/profilePictures/default.png",
+            "Name": "Tom",
+            "Profile": "/profilePictures/profile5.jpeg",
             "Relationship" : "Friend",
             "Interests" : ["Skating", "Apex Legends"]
         },{
             "Id": 6,
-            "Name": "Sheryl Doe",
-            "Profile": "/profilePictures/default.png",
+            "Name": "Kevin",
+            "Profile": "/profilePictures/profile6.jpeg",
             "Relationship" : "Sister",
             "Interests" : ["Skating", "Boxing"]
         },{
             "Id": 7,
-            "Name": "James Doe",
-            "Profile": "/profilePictures/default.png",
+            "Name": "Jack",
+            "Profile": "/profilePictures/profile7.jpeg",
             "Relationship" : "Friend",
             "Interests" : ["Skating", "Mario Kart"]
         },{
             "Id": 8,
-            "Name": "James Doe",
-            "Profile": "/profilePictures/default.png",
-            "Relationship" : "Sister",
+            "Name": "Paul",
+            "Profile": "/profilePictures/profile8.jpeg",
+            "Relationship" : "Brother",
             "Interests" : ["Dancing"]
 
         },{
             "Id": 9,
-            "Name": "James Doe",
-            "Profile": "/profilePictures/default.png",
+            "Name": "Karen",
+            "Profile": "/profilePictures/profile9.jpeg",
             "Relationship" : "Sister",
             "Interests" : ["Cooking"]
 
         },{
             "Id": 10,
-            "Name": "James Doe",
-            "Profile": "/profilePictures/default.png",
+            "Name": "Glen",
+            "Profile": "/profilePictures/profile10.jpeg",
             "Relationship" : "Sister",
             "Interests" : ["Cooking"]
-        }],
+        },{
+            "Id": 11,
+            "Name": "Danny",
+            "Profile": "/profilePictures/profile11.jpeg",
+            "Relationship" : "Sister",
+            "Interests" : ["Cooking"]
+        },{
+            "Id": 12,
+            "Name": "Fiona",
+            "Profile": "/profilePictures/profile12.jpeg",
+            "Relationship" : "Sister",
+            "Interests" : ["Cooking"]
+        },{
+            "Id": 13,
+            "Name": "Larissa",
+            "Profile": "/profilePictures/profile13.jpeg",
+            "Relationship" : "Sister",
+            "Interests" : ["Cooking"]
+        },{
+            "Id": 14,
+            "Name": "Vivian",
+            "Profile": "/profilePictures/profile14.jpeg",
+            "Relationship" : "Sister",
+            "Interests" : ["Cooking"]
+        },{
+            "Id": 15,
+            "Name": "Lydia",
+            "Profile": "/profilePictures/profile15.jpeg",
+            "Relationship" : "Sister",
+            "Interests" : ["Cooking"]
+        },{
+            "Id": 16,
+            "Name": "Aurora",
+            "Profile": "/profilePictures/profile16.jpeg",
+            "Relationship" : "Sister",
+            "Interests" : ["Cooking"]
+        },{
+            "Id": 17,
+            "Name": "Bruce",
+            "Profile": "/profilePictures/profile17.jpeg",
+            "Relationship" : "Sister",
+            "Interests" : ["Cooking"]
+        },{
+            "Id": 18,
+            "Name": "Joyce",
+            "Profile": "/profilePictures/profile18.jpeg",
+            "Relationship" : "Sister",
+            "Interests" : ["Cooking"]
+        },{
+            "Id": 19,
+            "Name": "Charlotte",
+            "Profile": "/profilePictures/profile19.jpeg",
+            "Relationship" : "Sister",
+            "Interests" : ["Cooking"]
+        },{
+            "Id": 20,
+            "Name": "Leon",
+            "Profile": "/profilePictures/profile20.jpeg",
+            "Relationship" : "Sister",
+            "Interests" : ["Cooking"]
+        }
+    
+    
+    
+    
+    ],
     "Events" : [{
             "Name": "Going shopping",
             "Time" :"2021-10-10T17:00:00",
             "CreatedBy": 10,
-            "CreatedOn": "2021-10-14T10:24:00",
             "Going" :[10]
         },{
-            "Name": "Family Cricket Day",
+            "Name": "Playing Sport",
             "Time" :"2021-10-20T17:00:00",
             "CreatedBy": 9,
-            "CreatedOn": "2021-10-13T10:24:00",
             "Going" :[10, 9, 7]
         },{
-            "Name": "Movie Night Tonight",
+            "Name": "Movie Night",
             "Time" :"2021-10-10T19:00:00",
             "CreatedBy" : 5,
-            "CreatedOn": "2021-10-15T10:24:00",
             "Going" : [5, 4, 1, 6]
         }], 
     "Status" : [{
             "Name" : "Finished Puzzle",
             "CreatedBy" : 10,
-            "Time" :"2021-10-15T03:24:00",
+            "Time" :"2021-10-09T03:24:00",
             "Photo" : null
         }, {
             "Name" : "Made new recipe",
             "CreatedBy" : 4,
-            "Time" :"2021-10-15T10:24:00",
+            "Time" :"2021-10-10T10:24:00",
             "Photo" : "images/recipe.jpg"
-        }, {
-            "Name" : "Got accepted into my Masters!",
-            "CreatedBy" : 8,
-            "Time" :"2021-10-15T10:24:00",
-            "Photo" : null
-        }, {
-            "Name" : "Went Jogging at Mt Cootha",
-            "CreatedBy" : 1,
-            "Time" :"2021-10-15T10:24:00",
-            "Photo" : null
-        }, {
-            "Name" : "Went Jogging near my house",
-            "CreatedBy" : 4,
-            "Time" :"2021-10-14T10:24:00",
-            "Photo" : null
-        }, {
-            "Name" : "Went Jogging",
-            "CreatedBy" : 4,
-            "Time" :"2021-10-13T10:24:00",
-            "Photo" : null
         }
     ],
 
