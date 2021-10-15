@@ -40,20 +40,21 @@ body{
 	width:90%;
 	margin-left:5%;
 	margin-right:5%;
-	border-radius:5%;	
+	border-radius:16px;	
 	padding-top:1vw;
 }
 
 header{
 	display:flex;
 	flex-direction:row;
+    justify-content: space-around;
 }
-	#editImg{
-		width:1.5vw;
-		height:1.5vw;
-		margin-left:75%;
-		margin-top:1vw;
-	}
+#editImg{
+    width:1.5vw;
+    height:1.5vw;
+    margin-left:75%;
+    margin-top:1vw;
+}
 
 .whiteLine,.greyLine{
 	display:flex;
@@ -71,11 +72,13 @@ header{
 }
 
 	#personImg{
-		width:10%;
-		height:100%;
+		width:80px;
+		height:80px;
 		border-radius:100%;
 		margin-top:-1vw;
 		margin-left:1.5vw;
+
+        background-size: cover;
 	}
 
 	.personRelationship{
@@ -105,7 +108,7 @@ h2{
 	font-size:1.5vw;
 }
 
-button{
+/* button{
 	display:flex;
 	flex-direction:row;
 	margin-left:3.5vw;
@@ -118,7 +121,7 @@ button{
 	border-radius:5%;
 	padding-left:2vw;
 	padding-right:2vw;
-}
+} */
 
 
 

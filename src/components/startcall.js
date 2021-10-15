@@ -26,7 +26,7 @@ export default function StartCall(props) {
 
     return (
             <div>
-                <div style={{ padding: "10px", top:"10px" }}>
+                <div style={{ padding: "10px", top:"10px" }} className="search-container">
                     {/* <TextField
                         id="input-with-icon-textfield"
                         label="Search"
@@ -40,16 +40,16 @@ export default function StartCall(props) {
                         variant="standard"
                         fullWidth 
                     /> */}
-                    <input type="text" className="search"></input>
+                    <input type="text" className="search" placeholder="Search Contact"></input>
                 </div>
                 <div className="family-box">
                     <FriendList handleSelected={handleSelected} friends={friends}></FriendList>
                 </div>
                 
                 <div className="buttons-container">
-                    <button className={selected.length >= 1 ? "button-call-active": "button-call"} onClick={handleStartCall}><VoiceChatIcon></VoiceChatIcon>Call</button>
+                    <button className={selected.length >= 1 ? "button-call-active": "button-call"} onClick={handleStartCall}><VoiceChatIcon className="button-icon"></VoiceChatIcon>Call</button>
                             {/* <Button sx={{width:200}} variant="contained">Call</Button> */}
-                    <button className="button-voice"><MicIcon></MicIcon>Voice Message</button>
+                    <button className="button-voice"><MicIcon className="button-icon"></MicIcon>Voice Message</button>
                             {/* <Button sx={{width:200}} variant="contained">Voice Message</Button> */}
                 </div>
             </div>

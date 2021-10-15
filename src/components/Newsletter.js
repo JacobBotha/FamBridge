@@ -1,6 +1,7 @@
 import { grey } from '@mui/material/colors';
 import React, { Component } from 'react';
 import './newsletter.css';
+import Avatar from '@mui/material/Avatar';
 
 
 const today = new Date().toJSON();
@@ -140,7 +141,15 @@ export default class Newsletter extends Component {
     whiteItem(friend, event) {
         return (
             <div class="whiteLine">
-                <img src={friend.Profile} alt="INSERTIMAGE" id="personImg"/>
+                <Avatar
+                alt={friend.Name}
+                src={friend.Profile}
+                sx={{ width: 80, height: 80 }}
+                // sx={selected.includes(friend) ? {width: 124, height: 124} : { width: 140, height: 140 }}
+                // onClick={() => selectFriend(friend)}
+                // className={selected.includes(friend) ? "friend-selected" : "friend-unselected"}
+                />
+                {/* <img src={friend.Profile} alt="INSERTIMAGE" id="personImg"/> */}
                 <div class="personRelationship">
                     <b>{friend.Name}</b>
                     <b id="relationshipType">{friend.Relationship} </b>

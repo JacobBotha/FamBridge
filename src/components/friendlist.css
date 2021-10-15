@@ -3,7 +3,16 @@ h3 {
 }
 
 .friend-list {
-    width: 90%;
+    width: 100%;
+
+}
+
+.grid-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 50px auto;
+    margin-top: 0px;
 }
 
 .friend-selected {

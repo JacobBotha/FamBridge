@@ -6,8 +6,9 @@ button{
 
 .family-box { 
     position: absolute;
-    top: 112px;
-    left: 12%; 
+    top: 110px;
+    left: 0px; 
+    width: 100%;
     height: calc(90% - 112px);
     overflow: auto;
 }
@@ -17,15 +18,16 @@ button{
     background: #FFFFFF;
     border: 1px solid rgba(34, 34, 34, 0.4);
     border-radius: 100px;
+     
+    display: inline;
+    padding: 10px 50px;
 
-    width: 235px;
-    height: 48px
 }
 
 .button-call {
-    width: 235px;
-    height: 48px;
-    margin-right: 20px;
+     
+    display: inline;
+    padding: 10px 50px;
 
     background: #FFFFFF;
     border: 1px solid rgba(34, 34, 34, 0.4);
@@ -34,9 +36,9 @@ button{
 }
 
 .button-call-active {
-    width: 235px;
-    height: 48px;
-    margin-right: 20px;
+     
+    display: inline;
+    padding: 10px 50px;
 
     background: #32428b;
     border: 1px solid rgba(34, 34, 34, 0.4);
@@ -57,13 +59,17 @@ button{
     left: 52px;
     top: 11px;
 }
-
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
 .search {
-    position:absolute;
     width: 90%;
-    top: 24px;
-    height: 48px;
-    left: 5%;
+    height: 18px;
+    padding: 20px;
+    justify-content: center;
 
     background: #E5E5E5;
     border: 1px solid #E5E5E5;
@@ -73,11 +79,19 @@ button{
 .buttons-container {
     position: absolute;
     top: 90%;
-    left: calc(50% - 245px);
+    width: 100%;
+    margin-top: 20px;
+    /* left: calc(50% - 245px); */
 
-    /* display: flex;
-    justify-content: center; */
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     /* margin: 0 auto; */
 
+}
+
+.button-icon {
+    position: relative;
+    top: 0.2em;
 }
 

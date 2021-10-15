@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './breadcrumb.css';
 
 export default function Breadcrumb(props) {
-    const crumbs = ["All", "Close Friends", "Friends", "Family", "Calendar"];
+    const crumbs = ["All", "Friends", "Family", "Calendar"];
     const [current, setCurrent] = useState("All");
     const handleClick = (crumb) => {
         setCurrent(crumb);
