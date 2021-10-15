@@ -40,7 +40,7 @@ export default function StartCall(props) {
                         variant="standard"
                         fullWidth 
                     /> */}
-                    <input type="text" className="search"></input>
+                    <input type="text" className="search" placeholder="Search Contact"></input>
                 </div>
                 <div className="family-box">
                     <FriendList handleSelected={handleSelected} friends={friends}></FriendList>

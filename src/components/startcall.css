@@ -70,14 +70,25 @@ button{
     border-radius: 100px;
 }
 
+
 .buttons-container {
     position: absolute;
-    top: 90%;
-    left: calc(50% - 245px);
+    bottom: 0px;
+    /* left: calc(50% - 245px); */
+    background-color: black; 
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 
     /* display: flex;
     justify-content: center; */
     /* margin: 0 auto; */
-
 }
 
+
+#close{
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    cursor: pointer;
+}

@@ -7,15 +7,35 @@ export default function CreateEvent(props) {
     const proposeEventContent = () => {
         return (
             <>
-                <h2>Propose Event Content</h2>
-                <h2>Propose Event Content</h2>
+                <div class="date"> <p>Date</p></div>
+                   
+                <div class="date-section">
+                    <div class = "time">
+                        <img src="/icons/calender.svg" id="calender"></img>
+                        15 Oct 2021
+                        <h5 id="timing">Friday</h5>
+                    </div>
+                    <img src="/icons/line.png" id="border"></img>
+                    <div class = "time">
+                        <img src="/icons/calender.svg" id="calender"></img>
+                        31 Oct 2021
+                        <h5 id="timing">Tuesday</h5>
+                    </div>
+                </div>
+                <div class="date"><p>Time</p></div>
 
-                <h2>Propose Event Content</h2>
+                <div class="time-section">
+                    <h5>Start Time</h5>
+                    <img src="/icons/line.png" id="border-2"></img>
+                    <h5>End Time</h5>
+                </div>
 
+                    
+                
+                
+                
 
-                <h2>Propose Event Content</h2>
-
-                <h2>Propose Event Content</h2>
+            
 
             </>   
         )
@@ -24,10 +44,10 @@ export default function CreateEvent(props) {
     return (
         <div className="modal" >
             <div className="profile-name">
-                <img src="/profilePictures/profile.png"></img>
+                <img src="/profilePictures/user.png"></img>
                 <p>Guy Hawkins</p>
             </div>
-            <img src="/icons/close.svg" onClick={props.handleCloseModal}></img>
+            <img id="close" src="/icons/close.svg" onClick={props.handleCloseModal}></img>
             <input type="text" placeholder="Enter your message"></input>
             <div className="propose-event">
                 <p>Propose an event?</p>
