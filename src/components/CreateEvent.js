@@ -34,22 +34,26 @@ export default function CreateEvent(props) {
     }
     
     return (
-        <div className="modal" >
+        <div className="modal-container">
+        <div className="modal">
+            <img id="close" src="/icons/close.svg" onClick={props.handleCloseModal}></img>
             <div className="profile-name">
                 <img src="/profilePictures/user.png"></img>
-                <p>Guy Hawkins</p>
+                <p className="text-style">Guy Hawkins</p>
             </div>
-            <img id="close" src="/icons/close.svg" onClick={props.handleCloseModal}></img>
-            <input type="text" placeholder="Enter your message"></input>
-            <div className="propose-event">
-                <p>Propose an event?</p>
-                <label class="switch">
-                    <input type="checkbox" onClick={() => setProposeEvent(!proposeEvent)}></input>
-                    <span class="slider round"></span>
-                </label>
+            <div className="extra-container">
+                <input className="input" type="text" placeholder="Enter your message"></input>
+                <div className="propose-event">
+                    <p className="text-style">Propose an event?</p>
+                    <label class="switch">
+                        <input type="checkbox" onClick={() => setProposeEvent(!proposeEvent)}></input>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                {proposeEvent ? proposeEventContent() : null}
+                <button type="button" id="send">Send</button>
             </div>
-            {proposeEvent ? proposeEventContent() : null}
-            <button type="button" id="send">Send</button>
+        </div>
         </div>
     )
 }

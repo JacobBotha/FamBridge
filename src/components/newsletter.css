@@ -10,13 +10,6 @@
     background-color: white;
 }
 
-
-body{
-	font-family: 'Inter', sans-serif;
-	margin:0vw;
-	font-size:1.25vw;
-}
-
 #newsletter{
 	background-color: transparent;
     width: 60vw;
@@ -27,6 +20,10 @@ body{
     top: 140px;
     bottom: 0px;
     overflow: auto;
+
+	font-family: 'Inter', sans-serif;
+	margin:0vw;
+	font-size:1.25vw;
 }
 
 #ignoreTopBanner{
@@ -36,7 +33,6 @@ body{
 
 #container{
 	background-color:#F9F9F9;
-	height:80%;
 	width:90%;
 	margin-left:5%;
 	margin-right:5%;
@@ -44,7 +40,7 @@ body{
 	padding-top:1vw;
 }
 
-header{
+.newsletter-header{
 	display:flex;
 	flex-direction:row;
     justify-content: space-around;
@@ -71,44 +67,44 @@ header{
 	background-color:#E5E5E5;
 }
 
-	#personImg{
-		width:80px;
-		height:80px;
-		border-radius:100%;
-		margin-top:-1vw;
-		margin-left:1.5vw;
+#personImg{
+	width:80px;
+	height:80px;
+	border-radius:100%;
+	margin-top:-1vw;
+	margin-left:1.5vw;
 
-        background-size: cover;
-	}
+	background-size: cover;
+}
 
-	.personRelationship{
-		display:flex;
-		flex-direction:column;
-		padding-left:2vw;
-	}
+.personRelationship{
+	display:flex;
+	flex-direction:column;
+	padding-left:2vw;
+}
 
-	#relationshipType{
-		color:#777777;
-		margin-top:0.5vw;
-		font-weight:normal;
-	}
+#relationshipType{
+	color:#777777;
+	margin-top:0.5vw;
+	font-weight:normal;
+}
 
-	.activity{
-		margin-top:1vw;
-		margin-left:3vw;	
-		width:80%;
-	}
+.activity{
+	margin-top:1vw;
+	margin-left:3vw;	
+	width:80%;
+}
 
-a{
+.date-link{
 	color:#1D77FF;
 }
 
-h2{
+.heading{
 	padding-left:2vw;
 	font-size:1.5vw;
 }
 
-/* button{
+.button-join{
 	display:flex;
 	flex-direction:row;
 	margin-left:3.5vw;
@@ -118,10 +114,10 @@ h2{
 	height:3vw;
 	background-color:#FFFFFF;
 	border: 1.5px solid #222222;
-	border-radius:5%;
+	border-radius:8px;
 	padding-left:2vw;
 	padding-right:2vw;
-} */
+}
 
 .hidden {
 	display: none;

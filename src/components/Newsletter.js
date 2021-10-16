@@ -26,20 +26,8 @@ export default class Newsletter extends Component {
     constructor(props) {
         super(props);
         this.friends = props.friends;
-        const items = []
-        props.status.map(s => {
-            s["isStatus"] = true;
-            return (items.push(s));
-        });
-        props.events.map(e => {
-            e["Time"] = e["CreatedOn"];
-            e["isStatus"] = false;
-            return (items.push(e));
-        });
-        
-        items.sort((a, b) => b.Time > a.Time ? 1: -1)
+
         this.state = {
-            items: items,
             showModal: false
         }
     }
@@ -54,10 +42,10 @@ export default class Newsletter extends Component {
     tableItems() {
         let tableItemsHtml = []
         let greyWhiteBox = [];
-        let currentDate = new Date().getDate();
+        let currentDate = new Date(this.props.items[0].Time).getDate();
 
         let isWhite = false;
-        for (let event of this.state.items) {
+        for (let event of this.props.items) {
             let date = new Date(event.Time);
             if (date.getDate() != currentDate) {
                 //This is for the date
@@ -77,11 +65,11 @@ export default class Newsletter extends Component {
             //This is for the event item
             if (isWhite) {
                 greyWhiteBox.push(
-                    this.whiteItem(this.getFriend(event.CreatedBy), event)
+                    this.newsletterRow(this.getFriend(event.CreatedBy), event, "whiteLine")
                 );
             } else {
                 greyWhiteBox.push(
-                    this.grayItem(this.getFriend(event.CreatedBy), event)
+                    this.newsletterRow(this.getFriend(event.CreatedBy), event, "greyLine")
                 );
             }
 
@@ -117,39 +105,17 @@ export default class Newsletter extends Component {
             dateFormatted = date.getDate() + "-" + months[date.getMonth()];
         }
         return (
-            <h2>{dateFormatted}</h2>
+            <h2 className="heading">{dateFormatted}</h2>
         );
     }
 
-    grayItem(friend, event) {
+    newsletterRow(friend, event, rowClass) {
         return (
-            <div class="greyLine">
-                <img src={friend.Profile} alt="INSERTIMAGE" id="personImg"/>
-                <div class="personRelationship">
-                    <b>{friend.Name}</b>
-                    <b id="relationshipType">{friend.Relationship} </b>
-                </div>
-                <div class="activity">
-                    {event.Name} <a href ="ADD">{this.timeString( event.Time )}</a>
-                </div>
-                <button>
-                    <img src="/icons/joinButtonIcon.png" id="buttonIcon"/>
-                    <b>Join</b>
-                </button>
-            </div>
-        );
-    }
-
-    whiteItem(friend, event) {
-        return (
-            <div class="whiteLine">
+            <div class={rowClass}>
                 <Avatar
                 alt={friend.Name}
                 src={friend.Profile}
-                sx={{ width: 80, height: 80 }}
-                // sx={selected.includes(friend) ? {width: 124, height: 124} : { width: 140, height: 140 }}
-                // onClick={() => selectFriend(friend)}
-                // className={selected.includes(friend) ? "friend-selected" : "friend-unselected"}
+                sx={{ width: 80, height: 80, marginLeft: 5 }}
                 />
                 {/* <img src={friend.Profile} alt="INSERTIMAGE" id="personImg"/> */}
                 <div class="personRelationship">
@@ -159,7 +125,7 @@ export default class Newsletter extends Component {
                 <div class="activity">
                     {event.Name} <a href ="ADD">{event.Time}</a>
                 </div>
-                <button>
+                <button className="button-join">
                     <img src="/icons/joinButtonIcon.png" id="buttonIcon"/>
                     <b>Join</b>
                 </button>
@@ -171,8 +137,8 @@ export default class Newsletter extends Component {
         return (
             <div id="newsletter">
                 <div id="container">
-                    <header>
-                        <h2>Today</h2>
+                    <header className="newsletter-header">
+                        {this.dateItem(new Date(this.props.items[0].Time))}
                         <img onClick={() => this.setState({showModal : true})} src="/icons/edit.png" alt="INSERTIMAGE" id="editImg"/>
                     </header>
                     {this.tableItems()}

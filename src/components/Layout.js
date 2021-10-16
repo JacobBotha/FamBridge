@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 import StartCall from './startcall.js';
-import Grid from '@mui/material/Grid';
 import NewsletterBar from './NewsletterBar.js';
 import Newsletter from './Newsletter';
 import Calendar from './Calendar';
@@ -17,12 +16,48 @@ const leftSideStyle = {
   "height": "100vh",
   "width" : "60vw"
 }
-const familyEvents = () => {
+
+const familyItems = () => {
   let e = []
 
-  for(let event of myData.Events) {
+  for(let event of myData.Status) {
     for (let friend of myData.Friends) {
-      if (friend.Id == event.CreatedBy && friend.Relationship != "Close Friend" && friend.Relationship != "Friend") {
+      if (friend.Id == event.CreatedBy && friend.Relationship != "Friend") {
+        event["isStatus"] = true;
+        e.push(event);
+      }
+    }
+  }
+
+  for (let event of myData.Events) {
+    for (let friend of myData.Friends) {
+      if (friend.Id == event.CreatedBy && friend.Relationship != "Friend") {
+        event["isStatus"] = false;
+        e.push(event);
+      }
+    }
+  }
+
+  return e;
+
+}
+
+const friendItems = () => {
+  let e = [];
+
+  for(let event of myData.Status) {
+    for (let friend of myData.Friends) {
+      if (friend.Id == event.CreatedBy && friend.Relationship == "Friend") {
+        event["isStatus"] = true;
+        e.push(event);
+      }
+    }
+  }
+
+  for (let event of myData.Events) {
+    for (let friend of myData.Friends) {
+      if (friend.Id == event.CreatedBy && friend.Relationship == "Friend") {
+        event["isStatus"] = false;
         e.push(event);
       }
     }
@@ -31,18 +66,18 @@ const familyEvents = () => {
   return e;
 }
 
-const familyStatus = () => {
-  let e = []
+const allItems = () => {
+  let e = [];
 
   for(let event of myData.Status) {
-    for (let friend of myData.Friends) {
-      if (friend.Id == event.CreatedBy && friend.Relationship != "Close Friend" && friend.Relationship != "Friend") {
-        e.push(event);
-      }
-    }
+    event["isStatus"] = true;
+    e.push(event);
   }
 
-  console.log(e)
+  for (let event of myData.Events) {
+    event["isStatus"] = false;
+    e.push(event);
+  }
 
   return e;
 }
@@ -54,22 +89,29 @@ export default function Layout(props) {
     const [friends, setFriends] = useState(myData.Friends);
     const [events, setEvents] = useState(myData.Events);
     const [statuses, setStatuses] = useState(myData.Status);
-    const [eventsFriends, setEventsFriends] = useState(myData.Events);
-    const [statusesFriends, setStatusesFriends] = useState(myData.Status);
-    const [eventsFamily, setEventsFamily] = useState(familyEvents());
-    const [statusesFamily, setStatusesFamily] = useState(familyStatus());
     const [topics, setTopics] = useState(myData.Topics);
     const [startCall, setStartCall] = useState(false);
     const [callFriends, setCallFriends] = useState([]);
     const [newsletterSelect, setNewsletterSelect] = useState("All");
 
+    const getNewsletterItems = () => {
+      if (newsletterSelect == "All") {
+        return allItems();
+      }
+
+      if (newsletterSelect == "Friends") {
+        return friendItems();
+      }
+
+      if (newsletterSelect == "Family") {
+        return familyItems();
+      }
+    }
+
     const leftPanel = function() {
       if (current === 'Newsletter') {
-        if (newsletterSelect == "All") {
-          return <Newsletter events={events} status={statuses} friends={friends}></Newsletter>;
-        } else {
-          return <Newsletter events={eventsFamily} status={statusesFamily} friends={friends}></Newsletter>;
-        }
+        console.log(friendItems());
+        return <Newsletter items={getNewsletterItems()} friends={friends}></Newsletter>;
       }
 
       if (current === 'Calendar') {
@@ -85,51 +127,7 @@ export default function Layout(props) {
       }
 
       setNewsletterSelect(crumb);
-      // newsletterStatus(newsletterSelect);
-      // newsletterEvents(newsletterSelect);
     };
-
-    
-
-    const newsletterStatus = (filter) => {
-      let f = newsletterFriends(filter);
-      let e = []
-
-      for(let event of myData.Status) {
-        for (let friend of f) {
-          if (friend.Id == event.CreatedBy) {
-            e.push(event);
-            console.log(event);
-          }
-        }
-      }
-
-      setStatuses(e);
-    }
-
-    const newsletterFriends = (filter) => {
-      console.log(filter);
-      if (filter == "All") {
-        return friends;
-      } 
-
-      if (filter === "Friends" || filter === "Close Friends") {
-        let f = friends.filter((friend) => {
-          return friend.Relationship === "Friend" && friend.Relationship === "Close Friend";
-        });
-        return f;
-      }
-      
-      if (filter == "Close Friends") {
-        return friends.filter((friend) => {
-          return friend.Relationship === "Close Friend";
-        });
-      }
-
-      return friends.filter((friend) => {
-        return friend.Relationship != "Friend" && friend.Relationship != "Close Friend";
-      })
-    }
 
     const handleStartCall = (friends) => {
       setCallFriends(friends);

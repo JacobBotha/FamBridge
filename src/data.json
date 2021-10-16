@@ -12,13 +12,13 @@
             "Id": 2,
             "Name": "John",
             "Profile": "/profilePictures/profile2.jpeg",
-            "Relationship" : "friend",
+            "Relationship" : "Friend",
             "Interests" : ["Outlander (tv show)"]
         },{
             "Id": 3,
             "Name": "Mike",
             "Profile": "/profilePictures/profile3.jpeg",
-            "Relationship" : "friend",
+            "Relationship" : "Friend",
             "Interests" : ["Skating", "Cooking"]
         },{
             "Id": 4,
