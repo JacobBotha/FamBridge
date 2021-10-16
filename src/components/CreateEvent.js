@@ -1,33 +1,88 @@
 import React, { useState } from 'react';
 import './createEvent.css';
+import DateAdapter from '@mui/lab/AdapterDateFns';
+import frLocale from 'date-fns/locale/fr';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import DatePicker from '@mui/lab/DatePicker';
+import TextField from '@mui/material/TextField';
+import TimePicker from '@mui/lab/TimePicker';
 
 export default function CreateEvent(props) {
     const [proposeEvent,  setProposeEvent] = useState(false);
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
+    const [startTime, setStartTime] = useState(null);
+    const [endTime, setEndTime] = useState(null);
+    const [eventName, setEventName] = useState(null);
+
+    const submitEvent = () => {
+        console.log(startDate.setTime(startTime).toString());
+        const item = {
+            isStatus: proposeEvent,
+            StartDate: startDate,
+            EndDate: endDate,
+
+        }
+        if (proposeEvent) {
+            return item;
+        }
+    }
 
     const proposeEventContent = () => {
         return (
             <>
-                <div class="date"> <p>Date</p></div>
+                <div class="date"> <p className="text-style">Date</p></div>
                    
                 <div class="date-section">
                     <div class = "time">
-                        <img src="/icons/calender.svg" id="calender"></img>
-                        15 Oct 2021
-                        <h5 id="timing">Friday</h5>
+                        <LocalizationProvider dateAdapter={DateAdapter}>
+                        {/* <img src="/icons/calender.svg" id="calender"></img>
+                        31 Oct 2021
+                        <h5 id="timing">Tuesday</h5> */}
+                        <DatePicker
+                        label="Start Date"
+                        value={startDate}
+                        onChange={(newValue) => { setStartDate(newValue); }}
+                        format="DD-MM-YYYY"
+                        renderInput={(params) => <TextField {...params} />}
+                        ></DatePicker>
+                    </LocalizationProvider>
                     </div>
                     <img src="/icons/line.png" id="border"></img>
                     <div class = "time">
-                        <img src="/icons/calender.svg" id="calender"></img>
+                        <LocalizationProvider dateAdapter={DateAdapter}>
+                        {/* <img src="/icons/calender.svg" id="calender"></img>
                         31 Oct 2021
-                        <h5 id="timing">Tuesday</h5>
+                        <h5 id="timing">Tuesday</h5> */}
+                        <DatePicker
+                        label="End Date"
+                        value={endDate}
+                        onChange={(newValue) => { setEndDate(newValue); }}
+                        renderInput={(params) => <TextField {...params} />}
+                        ></DatePicker>
+                    </LocalizationProvider>
                     </div>
                 </div>
-                <div class="date"><p>Time</p></div>
+                <div class="date"><p className="text-style">Time</p></div>
 
                 <div class="time-section">
-                    <h5>Start Time</h5>
+                    <LocalizationProvider dateAdapter={DateAdapter}>
+                        <TimePicker
+                            label="Start Time"
+                            value={startTime}
+                            onChange={(newValue) => { setStartTime(newValue); }}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
+                    </LocalizationProvider>
                     <img src="/icons/line.png" id="border-2"></img>
-                    <h5>End Time</h5>
+                    <LocalizationProvider dateAdapter={DateAdapter}>
+                        <TimePicker
+                            label="End Time"
+                            value={endTime}
+                            onChange={(newValue) => { setEndTime(newValue); }}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
+                    </LocalizationProvider>
                 </div>
             </>   
         )
@@ -35,25 +90,30 @@ export default function CreateEvent(props) {
     
     return (
         <div className="modal-container">
-        <div className="modal">
-            <img id="close" src="/icons/close.svg" onClick={props.handleCloseModal}></img>
-            <div className="profile-name">
-                <img src="/profilePictures/user.png"></img>
-                <p className="text-style">Guy Hawkins</p>
-            </div>
-            <div className="extra-container">
-                <input className="input" type="text" placeholder="Enter your message"></input>
-                <div className="propose-event">
-                    <p className="text-style">Propose an event?</p>
-                    <label class="switch">
-                        <input type="checkbox" onClick={() => setProposeEvent(!proposeEvent)}></input>
-                        <span class="slider round"></span>
-                    </label>
+            <div className="modal">
+                <img id="close" src="/icons/close.svg" onClick={props.handleCloseModal}></img>
+                <div className="profile-name">
+                    <img src="/profilePictures/user.png"></img>
+                    <p className="text-style">Guy Hawkins</p>
                 </div>
-                {proposeEvent ? proposeEventContent() : null}
-                <button type="button" id="send">Send</button>
+                <div className="extra-container">
+                    <input 
+                        className="input" 
+                        type="text" 
+                        placeholder="Enter your message" 
+                        value={eventName} 
+                        onChange={(e) => {setEventName(e.target.value)}}></input>
+                    <div className="propose-event">
+                        <p className="text-style">Propose an event?</p>
+                        <label class="switch">
+                            <input type="checkbox" onClick={() => setProposeEvent(!proposeEvent)}></input>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    {proposeEvent ? proposeEventContent() : null}
+                    <button type="button" id="send" onClick={submitEvent}>Send</button>
+                </div>
             </div>
         </div>
-        </div>
-    )
+    );
 }

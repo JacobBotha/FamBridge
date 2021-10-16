@@ -53,8 +53,12 @@ body{
 
 #leftArrow{
 	opacity:40%;
+    cursor: pointer;
 }
 
+#rightArrow{
+    cursor: pointer;
+}
 
 #weekEnd{
 	color:#A3A3A3;
@@ -83,4 +87,15 @@ body{
 .date{
 	width:14.3%;
 	height:4vw;
+}
+
+.pointer-date {
+    cursor: pointer;
+}
+
+.event-badge {
+    border-radius: 5px;
+    width: 10px;
+    height: 10px;
+    background: #1D77FF;
 }

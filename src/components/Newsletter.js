@@ -115,7 +115,7 @@ export default class Newsletter extends Component {
                 <Avatar
                 alt={friend.Name}
                 src={friend.Profile}
-                sx={{ width: 80, height: 80, marginLeft: 5 }}
+                id="personImg"
                 />
                 {/* <img src={friend.Profile} alt="INSERTIMAGE" id="personImg"/> */}
                 <div class="personRelationship">

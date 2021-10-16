@@ -17,77 +17,6 @@ const leftSideStyle = {
   "width" : "60vw"
 }
 
-const familyItems = () => {
-  let e = []
-
-  for(let event of myData.Status) {
-    for (let friend of myData.Friends) {
-      if (friend.Id == event.CreatedBy && friend.Relationship != "Friend") {
-        event["isStatus"] = true;
-        e.push(event);
-      }
-    }
-  }
-
-  for (let event of myData.Events) {
-    for (let friend of myData.Friends) {
-      if (friend.Id == event.CreatedBy && friend.Relationship != "Friend") {
-        event["isStatus"] = false;
-        e.push(event);
-      }
-    }
-  }
-  
-  e.sort((a, b) => { return a.Time - b.Time; });
-
-  return e;
-
-}
-
-const friendItems = () => {
-  let e = [];
-
-  for(let event of myData.Status) {
-    for (let friend of myData.Friends) {
-      if (friend.Id == event.CreatedBy && friend.Relationship == "Friend") {
-        event["isStatus"] = true;
-        e.push(event);
-      }
-    }
-  }
-
-  for (let event of myData.Events) {
-    for (let friend of myData.Friends) {
-      if (friend.Id == event.CreatedBy && friend.Relationship == "Friend") {
-        event["isStatus"] = false;
-        e.push(event);
-      }
-    }
-  }
-
-  e.sort((a, b) => { return a.Time - b.Time; });
-
-  return e;
-}
-
-const allItems = () => {
-  let e = [];
-
-  for(let event of myData.Status) {
-    event["isStatus"] = true;
-    e.push(event);
-  }
-
-  for (let event of myData.Events) {
-    event["isStatus"] = false;
-    e.push(event);
-  }
-
-  e.sort((a, b) => { return new Date(a.Time) - new Date(b.Time); });
-
-  return e;
-}
-
 export default function Layout(props) {
     const [current, setCurrent] = useState("Newsletter");
     const [name, setName] = useState(myData.Name);
@@ -99,6 +28,78 @@ export default function Layout(props) {
     const [startCall, setStartCall] = useState(false);
     const [callFriends, setCallFriends] = useState([]);
     const [newsletterSelect, setNewsletterSelect] = useState("All");
+
+  const familyItems = () => {
+    let e = []
+
+    for(let event of myData.Status) {
+      for (let friend of myData.Friends) {
+        if (friend.Id == event.CreatedBy && friend.Relationship != "Friend") {
+          event["isStatus"] = true;
+          e.push(event);
+        }
+      }
+    }
+
+    for (let event of myData.Events) {
+      for (let friend of myData.Friends) {
+        if (friend.Id == event.CreatedBy && friend.Relationship != "Friend") {
+          event["isStatus"] = false;
+          e.push(event);
+        }
+      }
+    }
+    
+    e.sort((a, b) => { return new Date(b.Time) - new Date(a.Time); });
+
+    return e;
+
+  }
+
+  const friendItems = () => {
+    let e = [];
+
+    for(let event of myData.Status) {
+      for (let friend of myData.Friends) {
+        if (friend.Id == event.CreatedBy && friend.Relationship == "Friend") {
+          event["isStatus"] = true;
+          e.push(event);
+        }
+      }
+    }
+
+    for (let event of myData.Events) {
+      for (let friend of myData.Friends) {
+        if (friend.Id == event.CreatedBy && friend.Relationship == "Friend") {
+          event["isStatus"] = false;
+          e.push(event);
+        }
+      }
+    }
+
+    e.sort((a, b) => { return new Date(b.Time) - new Date(a.Time); });
+
+    return e;
+  }
+
+  const allItems = () => {
+    let e = [];
+
+    for(let event of myData.Status) {
+      event["isStatus"] = true;
+      e.push(event);
+    }
+
+    for (let event of myData.Events) {
+      event["isStatus"] = false;
+      e.push(event);
+    }
+
+    e.sort((a, b) => { return new Date(b.Time) - new Date(a.Time); });
+
+    return e;
+  }
+
 
     const getNewsletterItems = () => {
       if (newsletterSelect == "All") {

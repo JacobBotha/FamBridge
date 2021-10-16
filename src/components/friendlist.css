@@ -19,9 +19,11 @@ h3 {
     border: 8px solid #1D77FF;
     width: 124px;
     height: 124px;
+    cursor: pointer;
 }
 
 .friend-unselected {
     width: 140px;
     height: 140px;
+    cursor: pointer;
 }

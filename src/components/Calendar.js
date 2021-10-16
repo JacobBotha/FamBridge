@@ -51,10 +51,34 @@ export default function Calendar(props) {
 
         return weeksHtml;
     }
+        
+    const badge = () => {
+        return (<span className="event-badge"></span>)
+    }
 
-    const dayCard = (date, dayClass, id) => {
+    const dayCard = (date, dayClass, id) => { 
+        let eventToday = props.events.filter((event) => {
+            let startDate = new Date(event.StartTime);
+            let endDate = new Date(event.EndTime);
+            return (
+                startDate.getDate() <= date  &&
+                endDate.getDate() >= date &&
+                startDate.getMonth() <= month  &&
+                endDate.getMonth() >= month &&
+                startDate.getFullYear() <= year &&
+                endDate.getFullYear() >= year 
+            )
+        });
+
+        let includeBadge = false;
+        
+        if (eventToday.length > 0) {
+            includeBadge = true;
+            console.log("Include Badge for ", date, " ", true);
+        }
         return (
-            <div className="date" key={id}>
+            <div className={includeBadge ? "pointer-date date" : "date"} key={id}>
+                {includeBadge ? badge() : null}
                 <b id={dayClass}>{date}</b>
             </div>
         )
@@ -81,8 +105,7 @@ export default function Calendar(props) {
     return (
             <div id="calContainer"> 
                 <div id="month">
-                    <b>{months[month]}</b>
-                    <h6>{year}</h6>
+                    <b>{months[month] + " " + year}</b>
                     <img src="/icons/arrow-left-bold.png" onClick={prevMonth} alt="INSERTIMAGE" id="leftArrow"/>
                     <img src="/icons/arrow-right-bold.png" onClick={nextMonth} alt="INSERTIMAGE" id="rightArrow"/>
                 </div>
