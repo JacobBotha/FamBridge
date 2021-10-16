@@ -82,6 +82,7 @@ export default function Calendar(props) {
             <div id="calContainer"> 
                 <div id="month">
                     <b>{months[month]}</b>
+                    <h6>{year}</h6>
                     <img src="/icons/arrow-left-bold.png" onClick={prevMonth} alt="INSERTIMAGE" id="leftArrow"/>
                     <img src="/icons/arrow-right-bold.png" onClick={nextMonth} alt="INSERTIMAGE" id="rightArrow"/>
                 </div>
