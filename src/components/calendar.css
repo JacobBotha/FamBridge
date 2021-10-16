@@ -1,0 +1,86 @@
+body{
+	font-family: 'Inter', sans-serif;
+	margin:0vw;
+	font-size:1.25vw;
+	color:#222222;
+}
+
+#ignoreTopBanner{
+	height:10%;
+	background-color:blue;
+}
+
+#calendar{
+	width:50%;
+	height:100%;
+	background-color:#C4C4C4;
+}
+
+#calContainer{
+	background-color:#F9F9F9;
+	height:80%;
+	width:90%;
+	margin:20px;
+	border-radius:16px;	
+	padding-top:1vw;
+	padding-left:2vw;
+}
+
+#month{
+	width:35%;
+	/*background-color:red;*/
+	border-bottom:solid #A3A3A3 0.5px;
+	padding:0vw;
+	margin-bottom:1vw;
+	margin-top:1vw;
+	display:flex;
+	flex-direction:row;
+}
+
+#month b{
+	font-size:2vw;
+	margin-right:2vw;
+	margin-bottom:1vw;
+	margin-left:2vw;
+
+}
+
+#month img{
+	width:2vw;
+	height:2vw;
+	margin-top:0.5vw;
+}
+
+#leftArrow{
+	opacity:40%;
+}
+
+
+#weekEnd{
+	color:#A3A3A3;
+}
+
+
+.week, .days{
+	width:90%;
+	margin-left:2vw;
+	display:flex;
+	flex-direction:row;
+}
+
+.days{
+	margin-bottom:1vw;
+}
+
+.week{
+	border-bottom:solid #A3A3A3 0.5px;
+	margin-bottom:1vw;
+}
+
+.dayName{
+	width:14.3%;
+}
+.date{
+	width:14.3%;
+	height:4vw;
+}

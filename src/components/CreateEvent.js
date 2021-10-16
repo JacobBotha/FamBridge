@@ -29,14 +29,6 @@ export default function CreateEvent(props) {
                     <img src="/icons/line.png" id="border-2"></img>
                     <h5>End Time</h5>
                 </div>
-
-                    
-                
-                
-                
-
-            
-
             </>   
         )
     }
