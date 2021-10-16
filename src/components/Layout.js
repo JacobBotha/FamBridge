@@ -37,6 +37,8 @@ const familyItems = () => {
       }
     }
   }
+  
+  e.sort((a, b) => { return a.Time - b.Time; });
 
   return e;
 
@@ -63,6 +65,8 @@ const friendItems = () => {
     }
   }
 
+  e.sort((a, b) => { return a.Time - b.Time; });
+
   return e;
 }
 
@@ -78,6 +82,8 @@ const allItems = () => {
     event["isStatus"] = false;
     e.push(event);
   }
+
+  e.sort((a, b) => { return new Date(a.Time) - new Date(b.Time); });
 
   return e;
 }
