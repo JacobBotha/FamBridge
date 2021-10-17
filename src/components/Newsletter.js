@@ -1,5 +1,5 @@
 import { grey } from '@mui/material/colors';
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import CreateEvent from './CreateEvent';
 import './newsletter.css';
 import Avatar from '@mui/material/Avatar';
@@ -22,30 +22,24 @@ const isToday = (someDate, offset = 0) => {
     someDate.getFullYear() == today.getFullYear()
 }
 
-export default class Newsletter extends Component {
-    constructor(props) {
-        super(props);
-        this.friends = props.friends;
+const timeString = (dateString) => {
+    let date = new Date(dateString);
+    let time = (date.getHours() % 12) + ":" + ((date.getMinutes() < 10) ? date.getMinutes()+"0" : date.getMinutes()) + " " + ((date.getHours()  >= 12) ? "PM" : "AM");
 
-        this.state = {
-            showModal: false
-        }
-    }
+    return time;
+}
 
-    timeString(dateString) {
-        let date = new Date(dateString);
-        let time = (date.getHours() % 12) + ":" + ((date.getMinutes() < 10) ? date.getMinutes()+"0" : date.getMinutes()) + " " + ((date.getHours()  >= 12) ? "PM" : "AM");
+export default function Newsletter(props) {
+    const [showModal, setShowModal] = useState(false);
 
-        return time;
-    }
 
-    tableItems() {
+    const tableItems = () => {
         let tableItemsHtml = []
         let greyWhiteBox = [];
-        let currentDate = new Date(this.props.items[0].Time).getDate();
+        let currentDate = new Date(props.items[0].Time).getDate();
 
         let isWhite = false;
-        for (let event of this.props.items) {
+        for (let event of props.items) {
             let date = new Date(event.Time);
             if (date.getDate() != currentDate) {
                 //This is for the date
@@ -58,18 +52,18 @@ export default class Newsletter extends Component {
                 isWhite = false;
 
                 tableItemsHtml.push(
-                    this.dateItem(date)
+                    dateItem(date)
                 );
                 currentDate = date.getDate();
             }
             //This is for the event item
             if (isWhite) {
                 greyWhiteBox.push(
-                    this.newsletterRow(this.getFriend(event.CreatedBy), event, "whiteLine")
+                    newsletterRow(getFriend(event.CreatedBy), event, "whiteLine")
                 );
             } else {
                 greyWhiteBox.push(
-                    this.newsletterRow(this.getFriend(event.CreatedBy), event, "greyLine")
+                    newsletterRow(getFriend(event.CreatedBy), event, "greyLine")
                 );
             }
 
@@ -85,15 +79,15 @@ export default class Newsletter extends Component {
         return tableItemsHtml;
     }
 
-    getFriend(id) {
-        let friend = this.friends.filter((f) => {
+    const getFriend = (id) => {
+        let friend = props.friends.filter((f) => {
             return f.Id === id;
         })
 
         return friend[0];
     }
 
-    dateItem(date) {
+    const dateItem = (date) => {
         let dateFormatted = "";
         if (isToday(date)) {
             dateFormatted = "Today";
@@ -109,7 +103,7 @@ export default class Newsletter extends Component {
         );
     }
 
-    newsletterRow(friend, event, rowClass) {
+    const newsletterRow = (friend, event, rowClass) => {
         return (
             <div class={rowClass}>
                 <Avatar
@@ -123,7 +117,7 @@ export default class Newsletter extends Component {
                     <b id="relationshipType">{friend.Relationship} </b>
                 </div>
                 <div class="activity">
-                    {event.Name} <a href ="ADD">{event.Time}</a>
+                    {event.Name} <a href="">{timeString(event.Time)}</a>
                 </div>
                 <button className="button-join">
                     <img src="/icons/joinButtonIcon.png" id="buttonIcon"/>
@@ -133,20 +127,22 @@ export default class Newsletter extends Component {
         );
     }
 
-    render () {
-        return (
-            <div id="newsletter">
-                <div id="container">
-                    <header className="newsletter-header">
-                        {this.dateItem(new Date(this.props.items[0].Time))}
-                        <img onClick={() => this.setState({showModal : true})} src="/icons/edit.png" alt="INSERTIMAGE" id="editImg"/>
-                    </header>
-                    {this.tableItems()}
-                    <div className={this.state.showModal ? "" : "hidden"}>
-                        <CreateEvent handleCloseModal={() => this.setState({showModal: false})}></CreateEvent>
-                    </div>
+    const updateItems = (item) => {
+        return;
+    }
+
+    return (
+        <div id="newsletter">
+            <div id="container">
+                <header className="newsletter-header">
+                    {dateItem(new Date(props.items[0].Time))}
+                    <img onClick={() => setShowModal(true)} src="/icons/edit.png" alt="INSERTIMAGE" id="editImg"/>
+                </header>
+                {tableItems()}
+                <div className={showModal ? "" : "hidden"}>
+                    <CreateEvent updateItems={updateItems} handleCloseModal={() => setShowModal(false)}></CreateEvent>
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
