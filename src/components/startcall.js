@@ -26,7 +26,6 @@ export default function StartCall(props) {
         }
         
         console.log(name);
-        const matches = props.friends.filter(s => s.Name.includes('T'));
         let newFriends = props.friends.filter((friend) => {
             console.log("Friend.Name (", friend.Name, ") includes", name, " = ", friend.Name.includes(name));
             return friend.Name.indexOf(name) !== -1;
