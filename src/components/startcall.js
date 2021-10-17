@@ -4,13 +4,19 @@ import './startcall.css'
 import FriendList from './FriendList';
 import MicIcon from '@mui/icons-material/Mic';
 import VoiceChatIcon from '@mui/icons-material/VoiceChat';
+import VoiceMessage from './VoiceMessage';
+import { SettingsInputAntennaTwoTone } from '@mui/icons-material';
 
 export default function StartCall(props) {
     const [selected, setSelected] = useState([]);
     const [friends, setFriends] = useState(props.friends);
     const [searchContent, setSearchContent] = useState("");
+    const [showModal, setShowModal] = useState(false);
 
     const handleStartCall = () => {
+        if(selected.length < 1) {
+            return;
+        }
         props.handleStartCall(selected);
     }
 
@@ -34,8 +40,16 @@ export default function StartCall(props) {
         setFriends(newFriends);
     }
 
+    const handleOpenVoiceMessage = () => {
+        if (selected.length < 1) {
+            return;
+        }
+
+        setShowModal(true);
+    }
+
     return (
-            <div>
+            <div style={{width: "100%", height:"100%"}}>
                 <div style={{ padding: "10px", top:"10px" }} className="search-container">
                     {/* <TextField
                         id="input-with-icon-textfield"
@@ -57,10 +71,18 @@ export default function StartCall(props) {
                 </div>
                 
                 <div className="buttons-container">
-                    <button className={selected.length >= 1 ? "button-call-active": "button-call"} onClick={handleStartCall}><VoiceChatIcon className="button-icon"></VoiceChatIcon>Call</button>
+                    <button className={selected.length >= 1 ? "button-call-active": "button-call"} onClick={handleStartCall}>
+                        <VoiceChatIcon className="button-icon" ></VoiceChatIcon>Call</button>
                             {/* <Button sx={{width:200}} variant="contained">Call</Button> */}
-                    <button className="button-voice"><MicIcon className="button-icon"></MicIcon>Voice Message</button>
+                    <button className={selected.length >= 1 ? "button-call-active": "button-call"} onClick={handleOpenVoiceMessage}><MicIcon className="button-icon">
+                        </MicIcon>Voice Message
+                    </button>
                             {/* <Button sx={{width:200}} variant="contained">Voice Message</Button> */}
+                </div>
+                <div className={showModal? "voice-container" : "hidden"}>
+                    <div className="voiceMessage">                    
+                        <VoiceMessage closeModal={() => setShowModal(false)}></VoiceMessage>
+                    </div>
                 </div>
             </div>
     )
