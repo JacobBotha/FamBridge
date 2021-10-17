@@ -153,8 +153,8 @@ export default function Layout(props) {
     setNewsletterSelect(crumb);
   };
 
-  const handleStartCall = () => {
-    setCallFriends(myData.Friends);
+  const handleStartCall = (friends) => {
+    setCallFriends(friends);
     setStartCall(true);
   };
 
