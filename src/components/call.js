@@ -21,17 +21,17 @@ export default function Call(props) {
 
     return (
             <div>
-                <img src={MainCall}></img>
+                <img alt="other" src={MainCall}></img>
                 <div className="call-menu">
                     <button onClick={endCall}>End Call</button>
                 </div>
-                <img className="self-camera" src={SelfCall}></img>
+                <img alt="self" className="self-camera" src={SelfCall}></img>
                 <div className="topic-box">
                     <h2>Conversation Starter</h2>
                     <p>{props.topics[topicCount-1]}</p>
                     { props.friends.map((friend) => {
                         let friendActivities = [];
-                        props.activities.map((activity) => {
+                        props.activities.forEach((activity) => {
                             if (activity.CreatedBy === friend.Id) {
                                 friendActivities.push( activity);
                             }

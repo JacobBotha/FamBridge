@@ -1,11 +1,9 @@
-import { grey } from '@mui/material/colors';
 import React, { useState } from 'react';
 import CreateEvent from './CreateEvent';
 import './newsletter.css';
 import Avatar from '@mui/material/Avatar';
 
 
-const today = new Date().toJSON();
 const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
@@ -17,9 +15,9 @@ const getLastWeek = () => {
 
 const isToday = (someDate, offset = 0) => {
   const today = new Date()
-  return someDate.getDate() == today.getDate() - offset &&
-    someDate.getMonth() == today.getMonth() &&
-    someDate.getFullYear() == today.getFullYear()
+  return someDate.getDate() === today.getDate() - offset &&
+    someDate.getMonth() === today.getMonth() &&
+    someDate.getFullYear() === today.getFullYear()
 }
 
 const timeString = (dateString) => {
@@ -41,7 +39,7 @@ export default function Newsletter(props) {
         let isWhite = false;
         for (let event of props.items) {
             let date = new Date(event.Time);
-            if (date.getDate() != currentDate) {
+            if (date.getDate() !== currentDate) {
                 //This is for the date
                 tableItemsHtml.push(
                     <div class="greyWhiteBoxes">
@@ -117,10 +115,10 @@ export default function Newsletter(props) {
                     <b id="relationshipType">{friend.Relationship} </b>
                 </div>
                 <div class="activity">
-                    {event.Name} <a href="">{timeString(event.Time)}</a>
+                    {event.Name} <a href="None?">{timeString(event.Time)}</a>
                 </div>
                 <button className="button-join">
-                    <img src="/icons/joinButtonIcon.png" id="buttonIcon"/>
+                    <img alt="join" src="/icons/joinButtonIcon.png" id="buttonIcon"/>
                     <b>Join</b>
                 </button>
             </div>
@@ -128,6 +126,7 @@ export default function Newsletter(props) {
     }
 
     const updateItems = (item) => {
+        props.addItem(item);
         return;
     }
 

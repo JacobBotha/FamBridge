@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import StartCall from './startcall.js';
 import NewsletterBar from './NewsletterBar.js';
@@ -19,12 +19,8 @@ const leftSideStyle = {
 
 export default function Layout(props) {
     const [current, setCurrent] = useState("Newsletter");
-    const [name, setName] = useState(myData.Name);
-    const [profile, setProfile] = useState(myData.Profile);
-    const [friends, setFriends] = useState(myData.Friends);
     const [events, setEvents] = useState(myData.Events);
     const [statuses, setStatuses] = useState(myData.Status);
-    const [topics, setTopics] = useState(myData.Topics);
     const [startCall, setStartCall] = useState(false);
     const [callFriends, setCallFriends] = useState([]);
     const [newsletterSelect, setNewsletterSelect] = useState("All");
@@ -32,18 +28,18 @@ export default function Layout(props) {
   const familyItems = () => {
     let e = []
 
-    for(let event of myData.Status) {
+    for(let event of statuses) {
       for (let friend of myData.Friends) {
-        if (friend.Id == event.CreatedBy && friend.Relationship != "Friend") {
+        if (friend.Id === event.CreatedBy && friend.Relationship !== "Friend") {
           event["isStatus"] = true;
           e.push(event);
         }
       }
     }
 
-    for (let event of myData.Events) {
+    for (let event of events) {
       for (let friend of myData.Friends) {
-        if (friend.Id == event.CreatedBy && friend.Relationship != "Friend") {
+        if (friend.Id === event.CreatedBy && friend.Relationship !== "Friend") {
           event["isStatus"] = false;
           e.push(event);
         }
@@ -59,18 +55,18 @@ export default function Layout(props) {
   const friendItems = () => {
     let e = [];
 
-    for(let event of myData.Status) {
+    for(let event of statuses) {
       for (let friend of myData.Friends) {
-        if (friend.Id == event.CreatedBy && friend.Relationship == "Friend") {
+        if (friend.Id === event.CreatedBy && friend.Relationship === "Friend") {
           event["isStatus"] = true;
           e.push(event);
         }
       }
     }
 
-    for (let event of myData.Events) {
+    for (let event of events) {
       for (let friend of myData.Friends) {
-        if (friend.Id == event.CreatedBy && friend.Relationship == "Friend") {
+        if (friend.Id === event.CreatedBy && friend.Relationship === "Friend") {
           event["isStatus"] = false;
           e.push(event);
         }
@@ -85,12 +81,12 @@ export default function Layout(props) {
   const allItems = () => {
     let e = [];
 
-    for(let event of myData.Status) {
+    for(let event of statuses) {
       event["isStatus"] = true;
       e.push(event);
     }
 
-    for (let event of myData.Events) {
+    for (let event of events) {
       event["isStatus"] = false;
       e.push(event);
     }
@@ -100,98 +96,119 @@ export default function Layout(props) {
     return e;
   }
 
+  const addItem = (item) => {
+    if (item["isStatus"] === true) {
+      let newStatus = {Time: item.Time, Name: item.Name, CreatedBy: item.CreatedBy, Photo: item.Photo}
+      setStatuses([...statuses, newStatus]);
+      return;
+    } 
 
-    const getNewsletterItems = () => {
-      if (newsletterSelect == "All") {
-        return allItems();
-      }
+    let newEvent = {Time: item.Time, Name: item.Name, CreatedBy: item.CreatedBy, StartTime: item.StartTime, EndTime: item.EndTime, Going: [item.CreatedBy]}
+    console.log(newEvent)
+    setEvents([...events, newEvent]);
+  }
+  const getNewsletterItems = () => {
+    if (newsletterSelect === "All") {
+      return allItems();
+    }
 
-      if (newsletterSelect == "Friends") {
-        return friendItems();
-      }
+    if (newsletterSelect === "Friends") {
+      return friendItems();
+    }
 
-      if (newsletterSelect == "Family") {
-        return familyItems();
+    if (newsletterSelect === "Family") {
+      return familyItems();
+    }
+  }
+
+  const getNewsletterFriends = () => {
+    const me = {
+      Id: myData.Id,
+      Name: myData.Name,
+      Profile: myData.Profile,
+      Relationship: "Me",
+      Interests: []
+    }
+    return [...myData.Friends, me];
+  }
+
+  const leftPanel = function() {
+    if (current === 'Newsletter') {
+      console.log(friendItems());
+      return <Newsletter addItem={addItem} items={getNewsletterItems()} friends={getNewsletterFriends()}></Newsletter>;
+    }
+
+    if (current === 'Calendar') {
+      return <Calendar  events={events}></Calendar>;
+    }
+  };
+
+  const handleCrumbChange = (crumb) => {
+    if(crumb === 'Calendar') {
+      setCurrent("Calendar");
+    } else {
+      setCurrent("Newsletter");
+    }
+
+    setNewsletterSelect(crumb);
+  };
+
+  const handleStartCall = () => {
+    setCallFriends(myData.Friends);
+    setStartCall(true);
+  };
+
+  const handleEndCall = () => {
+    setCallFriends([]);
+    setStartCall(false);
+  };
+
+  const callActivites = () => {
+    const activites = [];
+    var friendId = [].concat(callFriends).map(({Id})=>Id);
+    for(let status of statuses) {
+      if (friendId.indexOf(status.CreatedBy) !== -1) {
+        activites.push(status);
       }
     }
 
-    const leftPanel = function() {
-      if (current === 'Newsletter') {
-        console.log(friendItems());
-        return <Newsletter items={getNewsletterItems()} friends={friends}></Newsletter>;
-      }
-
-      if (current === 'Calendar') {
-        return <Calendar  events={events}></Calendar>;
-      }
-    };
-
-    const handleCrumbChange = (crumb) => {
-      if(crumb === 'Calendar') {
-        setCurrent("Calendar");
-      } else {
-        setCurrent("Newsletter");
-      }
-
-      setNewsletterSelect(crumb);
-    };
-
-    const handleStartCall = (friends) => {
-      setCallFriends(friends);
-      setStartCall(true);
-    };
-
-    const handleEndCall = () => {
-      setCallFriends([]);
-      setStartCall(false);
-    };
-
-    const callActivites = () => {
-      const activites = [];
-      var friendId = [].concat(callFriends).map(({Id})=>Id);
-      for(let status of statuses) {
-        if (friendId.indexOf(status.CreatedBy) != -1) {
-          activites.push(status);
-        }
-      }
-
-      return activites;
-    }
+    return activites;
+  }
 
 
-    const callPage = () => {
-      return (
-        <Call handleEndCall={handleEndCall} topics={topics} friends={callFriends} activities={callActivites()}></Call>
-      )
-    }
-
-    const mainPage = () => {
-      return (
-        <div style={{ width: '100%', height: "100%" }}>
-            <div style={leftSideStyle}>
-              <NewsletterBar></NewsletterBar>
-              <Breadcrumb handleCrumbChange={handleCrumbChange}/>
-              {leftPanel()}
-            </div>
-            <div style={{position: "absolute", width: "40%", height:"100%", right: "0px", top:"0px"}}>
-              <StartCall friends={friends} handleStartCall={handleStartCall}></StartCall>
-            </div>
-        </div>
-      );
-    }
-
-    const pageSwitcher = () => {
-      if (startCall == false) {
-        return mainPage();
-      }
-
-      return callPage();
-    }
-
+  const callPage = () => {
     return (
-      <div>
-        {pageSwitcher()}
-      </div>
+      <Call handleEndCall={handleEndCall} topics={myData.Topics} friends={callFriends} activities={callActivites()}></Call>
     )
+  }
+
+  const mainPage = () => {
+    return (
+      <div style={{ width: '100%', height: "100%" }}>
+          <div style={leftSideStyle}>
+            <NewsletterBar></NewsletterBar>
+            <Breadcrumb handleCrumbChange={handleCrumbChange}/>
+            {leftPanel()}
+          </div>
+          <div style={{position: "absolute", width: "40%", height:"100%", right: "0px", top:"0px"}}>
+            <StartCall friends={myData.Friends} handleStartCall={handleStartCall}></StartCall>
+          </div>
+      </div>
+    );
+  }
+
+  const pageSwitcher = () => {
+    if (startCall === false) {
+      return mainPage();
+    }
+
+    return callPage();
+  }
+
+  return (
+    <div>
+      {pageSwitcher()}
+    </div>
+  )
 }
 

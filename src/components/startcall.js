@@ -1,19 +1,11 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import './startcall.css'
 
-import InputAdornment from '@mui/material/InputAdornment';
-import TextField from '@mui/material/TextField';
-import SearchIcon from '@mui/icons-material/Search';
-import Box from '@mui/material/Box';
-import profile from './profile.png'
 import FriendList from './FriendList';
-import Grid from '@mui/material/Grid';
 import MicIcon from '@mui/icons-material/Mic';
 import VoiceChatIcon from '@mui/icons-material/VoiceChat';
-import { height } from '@mui/system';
 
 export default function StartCall(props) {
-    const [friends, setFriends] = useState(props.friends);
     const [selected, setSelected] = useState([]);
 
     const handleStartCall = () => {
@@ -43,7 +35,7 @@ export default function StartCall(props) {
                     <input type="text" className="search" placeholder="Search Contact"></input>
                 </div>
                 <div className="family-box">
-                    <FriendList handleSelected={handleSelected} friends={friends}></FriendList>
+                    <FriendList handleSelected={handleSelected} friends={props.friends}></FriendList>
                 </div>
                 
                 <div className="buttons-container">

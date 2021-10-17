@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import './createEvent.css';
 import DateAdapter from '@mui/lab/AdapterDateFns';
-import frLocale from 'date-fns/locale/fr';
+// import frLocale from 'date-fns/locale/fr';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import TextField from '@mui/material/TextField';
 import TimePicker from '@mui/lab/TimePicker';
-import { KeyboardReturnOutlined, PinDropRounded } from '@mui/icons-material';
+// import { KeyboardReturnOutlined, PinDropRounded } from '@mui/icons-material';
 
 export default function CreateEvent(props) {
     const [proposeEvent,  setProposeEvent] = useState(false);
@@ -14,23 +14,23 @@ export default function CreateEvent(props) {
     const [endDate, setEndDate] = useState(null);
     const [startTime, setStartTime] = useState(null);
     const [endTime, setEndTime] = useState(null);
-    const [eventName, setEventName] = useState(null);
+    const [eventName, setEventName] = useState("");
     const [errorMessage, setErrorMessage] = useState(null);
 
     const handleClose = () => {
-        props.handleCloseModal();
         setProposeEvent(false);
         setStartDate(null);
         setEndDate(null);
         setStartTime(null);
         setEndTime(null);
-        setEventName(null);
+        setEventName("");
         setErrorMessage(null);
+        props.handleCloseModal();
     }
 
     const submitEvent = () => {
         console.log(startTime);
-        if (eventName == null && !proposeEvent) {
+        if (eventName === null && !proposeEvent) {
             setErrorMessage("Your status update is blank!")
             return;
         }
@@ -47,42 +47,43 @@ export default function CreateEvent(props) {
             return;
         }
 
-        if (eventName == null && proposeEvent) {
+        if (eventName === null && proposeEvent) {
             setErrorMessage("Please enter a name for the event.");
             return;
         }
 
-        if (startDate == null || endDate == null || startTime == null || endTime == null) {
+        if (startDate === null || endDate === null || startTime === null || endTime === null) {
             setErrorMessage("Make sure you have set a start and end date and time.")
             return;
         }
-
+        
         const startDateTime = new Date(
-            startDate.getYear(), 
+            startDate.getFullYear(), 
             startDate.getMonth(), 
             startDate.getDate(), 
-            startTime.getHour(), 
+            startTime.getHours(), 
             startTime.getMinutes()
         );
 
         const endDateTime = new Date(
-            endDate.getYear(), 
+            endDate.getFullYear(), 
             endDate.getMonth(), 
             endDate.getDate(), 
-            endDate.getHour(), 
+            endDate.getHours(), 
             endDate.getMinutes()
         );
 
         const item = {
             isStatus: proposeEvent,
-            StartDate: startDateTime,
-            EndDate: endDateTime,
+            StartTime: startDateTime,
+            EndTime: endDateTime,
+            Time: new Date().toJSON(),
             Name: eventName,
-            Id: 0,
+            CreatedBy: 0,
         }
 
         props.updateItems(item);
-        handleClose()
+        handleClose();
     }
 
     const proposeEventContent = () => {
@@ -105,7 +106,7 @@ export default function CreateEvent(props) {
                         ></DatePicker>
                     </LocalizationProvider>
                     </div>
-                    <img src="/icons/line.png" id="border"></img>
+                    <img src="/icons/line.png" alt="line" id="border"></img>
                     <div class = "time">
                         <LocalizationProvider dateAdapter={DateAdapter}>
                         {/* <img src="/icons/calender.svg" id="calender"></img>
@@ -131,7 +132,7 @@ export default function CreateEvent(props) {
                             renderInput={(params) => <TextField {...params} />}
                         />
                     </LocalizationProvider>
-                    <img src="/icons/line.png" id="border-2"></img>
+                    <img src="/icons/line.png" alt="line" id="border-2"></img>
                     <LocalizationProvider dateAdapter={DateAdapter}>
                         <TimePicker
                             label="End Time"
@@ -148,9 +149,9 @@ export default function CreateEvent(props) {
     return (
         <div className="modal-container">
             <div className="modal">
-                <img id="close" src="/icons/close.svg" onClick={handleClose}></img>
+                <img id="close" src="/icons/close.svg" alt="close" onClick={handleClose}></img>
                 <div className="profile-name">
-                    <img src="/profilePictures/user.png"></img>
+                    <img alt="profile" src="/profilePictures/user.png"></img>
                     <p className="text-style">Guy Hawkins</p>
                 </div>
                 <div className="extra-container">

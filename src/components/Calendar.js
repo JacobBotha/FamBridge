@@ -15,7 +15,7 @@ export default function Calendar(props) {
         let i = 1;
         while (date < startDate + 7) {
             let dateClass = "weekday";
-            if (i == 1 || i == 7) {
+            if (i === 1 || i === 7) {
                 dateClass = "weekEnd";
             }
             if (date < 1 || date > maxDate) {
@@ -43,7 +43,7 @@ export default function Calendar(props) {
         for (let i = 0; i < 6; i++) {
             if(i*7 - startDay > maxDate) {
                 break;
-            } else if(i*7 - startDay == -7) {
+            } else if(i*7 - startDay === -7) {
                 continue;
             }
             weeksHtml.push(weekRow(i*7 - startDay, maxDate));
@@ -85,7 +85,7 @@ export default function Calendar(props) {
     }
 
     const nextMonth = () => {
-        if (month == 11) {
+        if (month === 11) {
             setMonth(0);
             setYear(year + 1);
         } else {
@@ -94,7 +94,7 @@ export default function Calendar(props) {
     }
 
     const prevMonth = () => {
-        if (month == 0) {
+        if (month === 0) {
             setMonth(11);
             setYear(year - 1);
         } else {
@@ -112,7 +112,7 @@ export default function Calendar(props) {
                 <div class="days">
                     { days.map( (day, index) => {
                         let dayClass = "weekday";
-                        if (index == 0 || index == 6) {
+                        if (index === 0 || index === 6) {
                             dayClass = "weekEnd";
                         }
                         return (

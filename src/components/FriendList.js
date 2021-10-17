@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import './friendlist.css';
 
-import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
 
 export default function FriendList(props) {
-    const [friends, setFriends] = useState(props.friends);
     const [selected, setSelected] = useState([]);
 
     const selectFriend = (friend) => {
@@ -25,24 +23,12 @@ export default function FriendList(props) {
         props.handleSelected(newSelected);
     }
 
-    const friendStyle = (friend) => {
-        if(selected === undefined || selected === null) {
-            return "friend-unselected";
-        }
-
-        if (selected.includes(friend)) {
-            return "friend-selected";
-        }
-
-        return "friend-unselected";
-    }
-
     const friendListGrid = () => {
         var gridHtml = [];
         var rowHtml = [];
 
-        for (let i = 1; i < friends.length; i++) {
-            let friend = friends[i-1];
+        for (let i = 1; i < props.friends.length; i++) {
+            let friend = props.friends[i-1];
             console.log(i)
 
 
@@ -57,7 +43,7 @@ export default function FriendList(props) {
                     <h3>{friend.Name}</h3>
                     </div>);
 
-            if (i % 3 == 0) {
+            if (i % 3 === 0) {
                 console.log("New Row")
                 gridHtml.push(
                     <div key={i} className="grid-row">
