@@ -7,7 +7,6 @@ export default function FriendList(props) {
     const [selected, setSelected] = useState([]);
 
     const selectFriend = (friend) => {
-        console.log(selected);
         let newSelected = [];
         if(selected.includes(friend)) {
             newSelected = selected.filter(function(person) { 
@@ -27,9 +26,8 @@ export default function FriendList(props) {
         var gridHtml = [];
         var rowHtml = [];
 
-        for (let i = 1; i < props.friends.length; i++) {
+        for (let i = 1; i <= props.friends.length; i++) {
             let friend = props.friends[i-1];
-            console.log(i)
 
 
             rowHtml.push(<div key={friend.Id} className="grid-item"><Avatar
@@ -44,13 +42,28 @@ export default function FriendList(props) {
                     </div>);
 
             if (i % 3 === 0) {
-                console.log("New Row")
                 gridHtml.push(
                     <div key={i} className="grid-row">
                         {rowHtml}
                     </div>);
                 rowHtml = [];
             }
+        }
+
+        if(rowHtml !== []) {
+            console.log("ROW LENGTH: ", rowHtml.length)
+            for (let i = 0; i <= 3 - rowHtml.length; i++) {
+                rowHtml.push(
+                    <div style={{width: 140, height: 140}} className="grid-item"></div>
+                )   
+            }
+
+            console.log("ROW LENGTH: ", rowHtml.length)
+            gridHtml.push(
+            <div key={props.friends.length +1} className="grid-row">
+                {rowHtml}
+            </div>);
+
         }
        
         return gridHtml;
