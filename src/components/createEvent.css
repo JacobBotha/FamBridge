@@ -258,3 +258,7 @@
   color: #999999;
   cursor: pointer;
 }
+
+.error-message {
+  color: red;
+}

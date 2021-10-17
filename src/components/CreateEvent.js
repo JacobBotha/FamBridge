@@ -6,6 +6,7 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import TextField from '@mui/material/TextField';
 import TimePicker from '@mui/lab/TimePicker';
+import { KeyboardReturnOutlined, PinDropRounded } from '@mui/icons-material';
 
 export default function CreateEvent(props) {
     const [proposeEvent,  setProposeEvent] = useState(false);
@@ -14,18 +15,74 @@ export default function CreateEvent(props) {
     const [startTime, setStartTime] = useState(null);
     const [endTime, setEndTime] = useState(null);
     const [eventName, setEventName] = useState(null);
+    const [errorMessage, setErrorMessage] = useState(null);
+
+    const handleClose = () => {
+        props.handleCloseModal();
+        setProposeEvent(false);
+        setStartDate(null);
+        setEndDate(null);
+        setStartTime(null);
+        setEndTime(null);
+        setEventName(null);
+        setErrorMessage(null);
+    }
 
     const submitEvent = () => {
-        console.log(startDate.setTime(startTime).toString());
+        console.log(startTime);
+        if (eventName == null && !proposeEvent) {
+            setErrorMessage("Your status update is blank!")
+            return;
+        }
+
+        if (!proposeEvent) {
+            props.updateItems({
+                isStatus: true,
+                Name: eventName,
+                Photo: null,
+                CreatedBy: 0,
+                Time: new Date().toJSON()
+            });
+            handleClose();
+            return;
+        }
+
+        if (eventName == null && proposeEvent) {
+            setErrorMessage("Please enter a name for the event.");
+            return;
+        }
+
+        if (startDate == null || endDate == null || startTime == null || endTime == null) {
+            setErrorMessage("Make sure you have set a start and end date and time.")
+            return;
+        }
+
+        const startDateTime = new Date(
+            startDate.getYear(), 
+            startDate.getMonth(), 
+            startDate.getDate(), 
+            startTime.getHour(), 
+            startTime.getMinutes()
+        );
+
+        const endDateTime = new Date(
+            endDate.getYear(), 
+            endDate.getMonth(), 
+            endDate.getDate(), 
+            endDate.getHour(), 
+            endDate.getMinutes()
+        );
+
         const item = {
             isStatus: proposeEvent,
-            StartDate: startDate,
-            EndDate: endDate,
+            StartDate: startDateTime,
+            EndDate: endDateTime,
+            Name: eventName,
+            Id: 0,
+        }
 
-        }
-        if (proposeEvent) {
-            return item;
-        }
+        props.updateItems(item);
+        handleClose()
     }
 
     const proposeEventContent = () => {
@@ -91,7 +148,7 @@ export default function CreateEvent(props) {
     return (
         <div className="modal-container">
             <div className="modal">
-                <img id="close" src="/icons/close.svg" onClick={props.handleCloseModal}></img>
+                <img id="close" src="/icons/close.svg" onClick={handleClose}></img>
                 <div className="profile-name">
                     <img src="/profilePictures/user.png"></img>
                     <p className="text-style">Guy Hawkins</p>
@@ -111,6 +168,7 @@ export default function CreateEvent(props) {
                         </label>
                     </div>
                     {proposeEvent ? proposeEventContent() : null}
+                    <b className="error-message">{errorMessage}</b>
                     <button type="button" id="send" onClick={submitEvent}>Send</button>
                 </div>
             </div>
