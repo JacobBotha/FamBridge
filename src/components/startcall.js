@@ -5,7 +5,6 @@ import FriendList from './FriendList';
 import MicIcon from '@mui/icons-material/Mic';
 import VoiceChatIcon from '@mui/icons-material/VoiceChat';
 import VoiceMessage from './VoiceMessage';
-import { SettingsInputAntennaTwoTone } from '@mui/icons-material';
 
 export default function StartCall(props) {
     const [selected, setSelected] = useState([]);
