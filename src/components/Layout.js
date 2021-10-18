@@ -107,6 +107,21 @@ export default function Layout(props) {
     console.log(newEvent)
     setEvents([...events, newEvent]);
   }
+  
+  const handleJoinEvent = (event) => {
+    let newEvents = events.filter((e) => {
+      return ( e.Time !== event.Time );
+    })
+
+    if (event.Going.includes(0)) {
+      event.Going.splice(event.Going.indexOf(0), 1);
+    } else {
+      event.Going = [...event.Going, 0];
+    }
+
+    setEvents([...newEvents, event])
+  }
+
   const getNewsletterItems = () => {
     if (newsletterSelect === "All") {
       return allItems();
@@ -135,11 +150,11 @@ export default function Layout(props) {
   const leftPanel = function() {
     if (current === 'Newsletter') {
       console.log(friendItems());
-      return <Newsletter addItem={addItem} items={getNewsletterItems()} friends={getNewsletterFriends()}></Newsletter>;
+      return <Newsletter handleJoinEvent={handleJoinEvent} addItem={addItem} items={getNewsletterItems()} friends={getNewsletterFriends()}></Newsletter>;
     }
 
     if (current === 'Calendar') {
-      return <Calendar  events={events}></Calendar>;
+      return <Calendar events={events}></Calendar>;
     }
   };
 

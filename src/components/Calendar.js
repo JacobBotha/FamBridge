@@ -39,7 +39,7 @@ export default function Calendar(props) {
         const maxDate = new Date(year, month+1, 0).getDate();
         const startDay = new Date(year, month, 1).getDay() - 1;
 
-        console.log("StartDay: ",new Date(year, month, 1).getDay())
+        console.log("StartDay: ", new Date(year, month, 1).getDay())
         for (let i = 0; i < 6; i++) {
             if(i*7 - startDay > maxDate) {
                 break;

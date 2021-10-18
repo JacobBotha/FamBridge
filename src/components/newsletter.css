@@ -121,6 +121,23 @@
   	cursor: pointer;
 }
 
+.button-joined{
+	display:flex;
+	flex-direction:row;
+	margin-left:3.5vw;
+	margin-right:2vw;
+	font-size:1.25vw;
+
+	height:3vw;
+	background-color: #222222;
+	color: white;
+	border: 1.5px solid #222222;
+	border-radius:8px;
+	padding-left:2vw;
+	padding-right:2vw;
+  	cursor: pointer;
+}
+
 .hidden {
 	display: none;
 }

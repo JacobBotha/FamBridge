@@ -33,7 +33,7 @@ export default function StartCall(props) {
         console.log(name);
         let newFriends = props.friends.filter((friend) => {
             console.log("Friend.Name (", friend.Name, ") includes", name, " = ", friend.Name.includes(name));
-            return friend.Name.indexOf(name) !== -1;
+            return friend.Name.toLowerCase().includes(name.toLowerCase());
         })
 
         setFriends(newFriends);
@@ -49,20 +49,7 @@ export default function StartCall(props) {
 
     return (
             <div style={{width: "100%", height:"100%"}}>
-                <div style={{ padding: "10px", top:"10px" }} className="search-container">
-                    {/* <TextField
-                        id="input-with-icon-textfield"
-                        label="Search"
-                        InputProps={{
-                        startAdornment: (
-                            <InputAdornment position="start">
-                            <SearchIcon />
-                            </InputAdornment>
-                        ),
-                        }}
-                        variant="standard"
-                        fullWidth 
-                    /> */}
+                <div className="search-container">
                     <input type="text" className="search" value={searchContent} onChange={(e) => {handleFriendSearch(e.target.value)}} placeholder="Search Contact"></input>
                 </div>
                 <div className="family-box">

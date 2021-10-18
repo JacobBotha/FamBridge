@@ -22,7 +22,9 @@ const isToday = (someDate, offset = 0) => {
 
 const timeString = (dateString) => {
     let date = new Date(dateString);
-    let time = (date.getHours() % 12) + ":" + ((date.getMinutes() < 10) ? date.getMinutes()+"0" : date.getMinutes()) + " " + ((date.getHours()  >= 12) ? "PM" : "AM");
+    let hours = ( date.getHours() % 12 === 0 ) ? 12: date.getHours() % 12;
+    let minutes = ((date.getMinutes() < 10) ? date.getMinutes() + "0" : date.getMinutes());
+    let time = hours + ":" +  minutes + " " + ((date.getHours() >= 12) ? "PM" : "AM") + " " + date.getDate() + '-' + months[date.getMonth()];
 
     return time;
 }
@@ -115,11 +117,11 @@ export default function Newsletter(props) {
                     <b id="relationshipType">{friend.Relationship} </b>
                 </div>
                 <div class="activity">
-                    {event.Name} <a href="None?">{timeString(event.Time)}</a>
+                    {event.Name} <a className={event.isStatus ? "hidden" : ""} href="None?">{timeString(event.StartTime)}</a>
                 </div>
-                <button className="button-join">
+                <button onClick={() => props.handleJoinEvent(event)} className={( event.isStatus ? "hidden" : (event.Going.includes(0) ? "button-joined" : "button-join" ))}>
                     <img alt="join" src="/icons/joinButtonIcon.png" id="buttonIcon"/>
-                    <b>Join</b>
+                    <b>{ event.isStatus ? "Like" : (event.Going.includes(0) ? "Joined" : "Join" )}</b>
                 </button>
             </div>
         );

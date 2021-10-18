@@ -74,9 +74,9 @@ export default function CreateEvent(props) {
         );
 
         const item = {
-            isStatus: proposeEvent,
-            StartTime: startDateTime,
-            EndTime: endDateTime,
+            isStatus: false,
+            StartTime: new Date(startDateTime).toJSON(),
+            EndTime: new Date(endDateTime).toJSON(),
             Time: new Date().toJSON(),
             Name: eventName,
             CreatedBy: 0,
