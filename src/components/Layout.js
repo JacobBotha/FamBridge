@@ -5,7 +5,7 @@ import NewsletterBar from './NewsletterBar.js';
 import Newsletter from './Newsletter';
 import Calendar from './Calendar';
 import Breadcrumb from './Breadcrumb.js';
-import Call from './call.js';
+import Call from './call/call.js';
 
 import myData from '../data.json';
 
