@@ -3,19 +3,25 @@ This is a demo for Team Meerkats demo Fambridge. This prototype is for connectin
 
 To view the demo, go to the fambridge website: https://fambridge.vercel.app/
 
-###Wiki Home:
+### Wiki Home:
 https://github.com/JacobBotha/FamBridge/wiki/
-###Poster: 
+
+### Poster: 
 https://github.com/JacobBotha/FamBridge/wiki/Conference-Poster
-###Promotional Material
+
+### Promotional Material
 https://github.com/JacobBotha/FamBridge/wiki/Promotional-Material
-###Proposal
+
+### Proposal
 https://docs.google.com/document/d/10c46oXbqOvztFFQ_mXfSPgEQ0Wj5IICDfRdApns8yBk/edit#heading=h.3kk9egwokn9n
-###Design Process
+
+### Design Process
 https://github.com/JacobBotha/FamBridge/wiki/Design-Process
-###References
+
+### References
 https://github.com/JacobBotha/FamBridge/wiki/Reference
-###Work Allocation
+
+### Work Allocation
 https://github.com/JacobBotha/FamBridge/wiki/Work-Allocation
 
 
