@@ -19,16 +19,21 @@ button{
     border: 1px solid rgba(34, 34, 34, 0.4);
     border-radius: 100px;
      
-    display: inline;
-    padding: 10px 50px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    width: 250px;
+    height: 48px
 
 }
 
 .button-call {
      
-    display: inline;
-    padding: 10px 50px;
-
+    display: flex;
+    width: 250px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
     background: #FFFFFF;
     border: 1px solid rgba(34, 34, 34, 0.4);
     border-radius: 100px;
@@ -37,11 +42,13 @@ button{
 
 .button-call-active {
      
-    display: inline;
-    padding: 10px 50px;
-
-    background: #32428b;
-    border: 1px solid rgba(34, 34, 34, 0.4);
+    display: flex;
+    width: 250px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    background: #1D77FF;
+    border: 1px solid #1D77FF;
     border-radius: 100px;
     color: white;
 
@@ -79,7 +86,7 @@ button{
 
 .buttons-container {
     position: absolute;
-    top: 90%;
+    bottom: 20px;
     width: 100%;
     margin-top: 20px;
     /* left: calc(50% - 245px); */
@@ -92,7 +99,7 @@ button{
 
 .button-icon {
     position: relative;
-    top: 0.2em;
+   
 }
 
 .hidden {

@@ -66,6 +66,10 @@ h1{
 	width:3vw;
 }
 
+#calModalLeftArrow {
+	padding-right: 24px;
+}
+
 #locationText{
 	font-size:1vw;
 }

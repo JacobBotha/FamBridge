@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-// import MainCall from '../../images/call_main.svg';
+import MainCall from '../../images/call_main.svg';
 // import SelfCall from '../../images/call_self.png';
 import './call.css';
 // import * as fb from '../../firebase/firebaseWebRTC';
@@ -67,12 +67,14 @@ export default function Call(props) {
 
     return (
             <div>
-                {/* <img alt="other" src={MainCall}></img> */}
+                <div style={{position:"fixed", width: "100vw", height:"100vh", overflow:"hidden", zIndex: "-1"}}>
+                    <img alt="other" src={MainCall} style={{width:"100vw"}}></img>
+                </div>
                 {/* <div className="call-menu">
                     <button onClick={endCall}>End Call</button>
                 </div> */}
                 <div id="callMenuBar">
-                    <div class="callIconButtons">
+                    <div className="callIconButtons">
                         <img src="/icons/microphone.png" class="menuIcon" alt="microphone"/>
                         <img src="/icons/video.png" class="menuIcon" alt="microphone"/>
                     </div>
@@ -81,11 +83,14 @@ export default function Call(props) {
                     </button>
                 </div>
                 {/* <Camera></Camera> */}
-                <video ref={localRef} id="localVideo" onCanPlay={handleCanPlay} muted autoplay playsinline></video>
+                <div id="localVideo">
+                    <video ref={localRef} onCanPlay={handleCanPlay} muted></video>
+                </div>
                 {/* <img alt="self" className="self-camera" src={SelfCall}></img> */}
-                <div className="topic-box">
+                <div className="topicPopUp">
                     <h2>Conversation Starter</h2>
                     <p>{props.topics[topicCount-1]}</p>
+                    <div className="interests">
                     { props.friends.map((friend) => {
                         let friendActivities = [];
                         props.activities.forEach((activity) => {
@@ -95,13 +100,14 @@ export default function Call(props) {
                         });
                         return (
                             <div>
-                                <h4>{friend.Name}</h4>
+                                <h4 style={{textDecoration: "underline"}}>{friend.Name}</h4>
                                 <p>Interests: {friend.Interests.join(", ")}</p>
                                 <p>{ (friendActivities.length >= 1) ? "Recent Activities: " : ""}{friendActivities.map((activity) => activity.Name)}</p> 
                             </div>
                         )
                     })}
-                    <button onClick={nextTopic}>Generate Topic</button>
+                    </div>
+                    <button className="generateTopic" onClick={nextTopic}>Generate Topic</button>
                 </div>
             </div>
     );

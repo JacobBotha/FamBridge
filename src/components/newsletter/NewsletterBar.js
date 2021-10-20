@@ -7,6 +7,7 @@ export default class NewsletterBar extends Component {
     render () {
         return (
         <AppBar style={{background: "#F9F9F9"}} position="static">
+            <img src="/icons/fambridge.svg" alt="Fambridge" style={{position: "absolute", left:"5px", top: "5px", width: "100px", height: "auto"}}></img>
             <Toolbar style={{ 
                 float       : 'none', 
                 width       : '200px',

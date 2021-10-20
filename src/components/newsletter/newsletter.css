@@ -114,7 +114,8 @@
 
 	height:3vw;
 	background-color:#FFFFFF;
-	border: 1.5px solid #222222;
+	color: #1D77FF;
+	border: 1.5px solid #1D77FF;
 	border-radius:8px;
 	padding-left:2vw;
 	padding-right:2vw;
@@ -129,9 +130,9 @@
 	font-size:1.25vw;
 
 	height:3vw;
-	background-color: #222222;
+	background-color: #1D77FF;
 	color: white;
-	border: 1.5px solid #222222;
+	border: 1.5px solid #1D77FF;
 	border-radius:8px;
 	padding-left:2vw;
 	padding-right:2vw;

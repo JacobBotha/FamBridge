@@ -143,8 +143,8 @@ export default function Event(props) {
             <div id="calModalHeading">
                 <h1 id="calModalmonthText"> {months[props.month]} </h1><h1 id="calModalDateText">{props.date} </h1>
                 <div id="calModelArrows">
-                    <img onClick={prevEvent} src="/icons/arrow-left-bold.png" className={(eventIndex === 0 ? "calModalArrowsInactive" : "")} id="calModalLeftArrow" alt="leftArrow"/>
-                    <img onClick={nextEvent} src="/icons/arrow-right-bold.png" className={(eventIndex + 1 >= props.events.length ? "calModalArrowsInactive" : "")} id="calModalRightArrow" alt="RightArrow"/>
+                    <img onClick={prevEvent} src="/icons/arrowLeft.svg" className={(eventIndex === 0 ? "calModalArrowsInactive" : "")} id="calModalLeftArrow" alt="leftArrow"/>
+                    <img onClick={nextEvent} src="/icons/arrowRight.svg" className={(eventIndex + 1 >= props.events.length ? "calModalArrowsInactive" : "")} id="calModalRightArrow" alt="RightArrow"/>
                 </div>
                 <h2 id="locationText"><i>{currentEvent === null ? "" : getCurrentEventTime()}</i></h2>
                 <h3 id="timeText"><i>{currentEvent === null ? "" : currentEvent.Name}</i></h3>

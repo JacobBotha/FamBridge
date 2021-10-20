@@ -87,8 +87,8 @@ export default function Calendar(props) {
             )
         });
 
-        let today = new Date()
-        let isToday = (date === today.getDate() && month === today.getMonth() && year === today.getFullYear());
+        // let today = new Date()
+        // let isToday = (date === today.getDate() && month === today.getMonth() && year === today.getFullYear());
 
         let includeBadge = false;
         
@@ -97,7 +97,7 @@ export default function Calendar(props) {
             console.log("Include Badge for ", date, " ", true);
         }
         return (
-            <div onClick={() => openEvent(eventToday, date)} style={isToday ? {fontSize: "2em"} : null} className={includeBadge ? "pointer-date date" : "date"} key={id}>
+            <div onClick={() => openEvent(eventToday, date)} className={includeBadge ? "pointer-date date" : "date"} key={id}>
                 {includeBadge ? badge : null}
                 <b id={dayClass}>{date}</b>
             </div>
@@ -126,8 +126,8 @@ export default function Calendar(props) {
             <div id="calContainer"> 
                 <div id="month">
                     <b>{months[month] + " " + year}</b>
-                    <img src="/icons/arrow-left-bold.png" onClick={prevMonth} alt="INSERTIMAGE" id="leftArrow"/>
-                    <img src="/icons/arrow-right-bold.png" onClick={nextMonth} alt="INSERTIMAGE" id="rightArrow"/>
+                    <img src="/icons/arrowLeft.svg" onClick={prevMonth} alt="INSERTIMAGE" id="leftArrow"/>
+                    <img src="/icons/arrowRight.svg" onClick={nextMonth} alt="INSERTIMAGE" id="rightArrow"/>
                 </div>
                 <div class="days">
                     { days.map( (day, index) => {

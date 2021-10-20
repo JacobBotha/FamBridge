@@ -120,7 +120,7 @@ export default function Newsletter(props) {
                     {event.Name} <a className={event.isStatus ? "hidden" : ""} href="None?">{timeString(event.StartTime)}</a>
                 </div>
                 <button onClick={() => props.handleJoinEvent(event)} className={( event.isStatus ? "hidden" : (event.Going.includes(0) ? "button-joined" : "button-join" ))}>
-                    <img alt="join" src="/icons/joinButtonIcon.png" id="buttonIcon"/>
+                    <img alt="join" src={( event.isStatus ? "/icons/joinButtonIconBlue.svg" : (event.Going.includes(0) ? "/icons/joinButtonIconWhite.svg" : "/icons/joinButtonIconBlue.svg" ))} id="buttonIcon"/>
                     <b>{ event.isStatus ? "Like" : (event.Going.includes(0) ? "Joined" : "Join" )}</b>
                 </button>
             </div>

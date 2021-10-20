@@ -53,6 +53,8 @@ body{
 
 #leftArrow{
     cursor: pointer;
+	padding-right: 24px;
+
 }
 
 #rightArrow{
@@ -93,8 +95,11 @@ body{
 }
 
 .event-badge {
-    border-radius: 5px;
-    width: 10px;
-    height: 10px;
+    border-radius: 100px;
+    width: 0.3em;
+    height: 0.3em;
     background: #1D77FF;
+	position: absolute;
+	margin-left: 1em;
+	margin-top: -0.4em;
 }
