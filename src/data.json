@@ -37,7 +37,7 @@
             "Id": 6,
             "Name": "Kevin",
             "Profile": "/profilePictures/profile6.jpeg",
-            "Relationship" : "Sister",
+            "Relationship" : "Uncle",
             "Interests" : ["Skating", "Boxing"]
         },{
             "Id": 7,
@@ -49,7 +49,7 @@
             "Id": 8,
             "Name": "Paul",
             "Profile": "/profilePictures/profile8.jpeg",
-            "Relationship" : "Brother",
+            "Relationship" : "Uncle",
             "Interests" : ["Dancing"]
 
         },{
@@ -63,13 +63,13 @@
             "Id": 10,
             "Name": "Glen",
             "Profile": "/profilePictures/profile10.jpeg",
-            "Relationship" : "Sister",
+            "Relationship" : "Grandpa",
             "Interests" : ["Cooking"]
         },{
             "Id": 11,
             "Name": "Danny",
             "Profile": "/profilePictures/profile11.jpeg",
-            "Relationship" : "Sister",
+            "Relationship" : "Friend",
             "Interests" : ["Cooking"]
         },{
             "Id": 12,
@@ -81,7 +81,7 @@
             "Id": 13,
             "Name": "Larissa",
             "Profile": "/profilePictures/profile13.jpeg",
-            "Relationship" : "Sister",
+            "Relationship" : "Cousin",
             "Interests" : ["Cooking"]
         },{
             "Id": 14,
@@ -93,32 +93,32 @@
             "Id": 15,
             "Name": "Lydia",
             "Profile": "/profilePictures/profile15.jpeg",
-            "Relationship" : "Sister",
-            "Interests" : ["Cooking"]
+            "Relationship" : "Friend",
+            "Interests" : ["Cycling", "Dancing"]
         },{
             "Id": 16,
             "Name": "Aurora",
             "Profile": "/profilePictures/profile16.jpeg",
-            "Relationship" : "Sister",
+            "Relationship" : "Grandma",
             "Interests" : ["Cooking"]
         },{
             "Id": 17,
             "Name": "Bruce",
             "Profile": "/profilePictures/profile17.jpeg",
-            "Relationship" : "Sister",
+            "Relationship" : "Cousin",
             "Interests" : ["Cooking"]
         },{
             "Id": 18,
             "Name": "Joyce",
             "Profile": "/profilePictures/profile18.jpeg",
             "Relationship" : "Sister",
-            "Interests" : ["Cooking"]
+            "Interests" : ["Cooking", "Skiing"]
         },{
             "Id": 19,
             "Name": "Charlotte",
             "Profile": "/profilePictures/profile19.jpeg",
             "Relationship" : "Sister",
-            "Interests" : ["Cooking"]
+            "Interests" : ["Riddles", "Nintendo Switch"]
         },{
             "Id": 20,
             "Name": "Leon",
@@ -128,33 +128,40 @@
         }
     ],
     "Events" : [{
-            "Name": "Going shopping",
-            "StartTime" :"2021-10-10T17:00:00",
-            "EndTime" :"2021-10-10T17:00:00",
-            "Time" :"2021-10-10T17:00:01",
-            "CreatedBy": 10,
-            "Going" :[10]
+            "Name": "Going shopping at Indro!",
+            "StartTime" :"2021-10-21T17:00:00",
+            "EndTime" :"2021-10-21T18:30:00",
+            "Time" :"2021-10-19T17:00:01",
+            "CreatedBy": 14,
+            "Going" :[14]
         },{
-            "Name": "Playing Sport",
-            "StartTime" :"2021-10-10T17:00:00",
-            "EndTime" :"2021-10-10T17:00:00",
-            "Time" :"2021-10-10T17:00:02",
-            "CreatedBy": 9,
-            "Going" :[10, 9, 7]
+            "Name": "Playing Soccer tonight.",
+            "StartTime" :"2021-10-21T17:00:00",
+            "EndTime" :"2021-10-21T19:00:00",
+            "Time" :"2021-10-21T17:00:02",
+            "CreatedBy": 17,
+            "Going" :[17, 10, 9, 7]
         },{
-            "Name": "Movie Night",
+            "Name": "Cooking class in the city!",
+            "StartTime" :"2021-10-21T17:00:00",
+            "EndTime" :"2021-10-21T19:00:00",
+            "Time" :"2021-10-20T17:00:02",
+            "CreatedBy": 8,
+            "Going" :[8, 11, 18]
+        },{
+            "Name": "Movie Night!",
             "StartTime" :"2021-10-10T17:00:00",
             "EndTime" :"2021-10-10T17:00:00",
             "Time" :"2021-10-10T17:00:03",
-            "CreatedBy" : 5,
-            "Going" : [5, 4, 1, 6]
+            "CreatedBy" : 12,
+            "Going" : [13, 12, 1, 8]
         }, {
-            "Name": "Going Camping at the damn.",
+            "Name": "Going Camping at the dam.",
             "StartTime" :"2021-10-14T13:00:00",
             "EndTime" :"2021-10-17T11:00:00",
             "Time" :"2021-10-10T17:00:04",
             "CreatedBy" : 5,
-            "Going" : [5, 4, 1, 6]
+            "Going" : [1, 5, 4, 1, 6]
         }], 
     "Status" : [{
             "Name" : "Finished Puzzle",
@@ -165,6 +172,36 @@
             "Name" : "Made new recipe",
             "CreatedBy" : 4,
             "Time" :"2021-10-10T10:24:00",
+            "Photo" : "images/recipe.jpg"
+        }, {
+            "Name" : "Got a new job as a graphic designer!",
+            "CreatedBy" : 18,
+            "Time" :"2021-10-18T10:24:00",
+            "Photo" : "images/recipe.jpg"
+        }, {
+            "Name" : "Went to the beach today and saw a sea turtle!",
+            "CreatedBy" : 16,
+            "Time" :"2021-10-19T10:24:00",
+            "Photo" : "images/recipe.jpg"
+        }, {
+            "Name" : "Bought a new drone and flew with it with keven! Will make a new event to all go soon!",
+            "CreatedBy" : 4,
+            "Time" :"2021-10-18T10:24:00",
+            "Photo" : "images/recipe.jpg"
+        }, {
+            "Name" : "Just got back from NT, what a beautiful vacation!",
+            "CreatedBy" : 9,
+            "Time" :"2021-10-17T10:24:00",
+            "Photo" : "images/recipe.jpg"
+        }, {
+            "Name" : "Tried to make some sushi, might need help next time! :(",
+            "CreatedBy" : 4,
+            "Time" :"2021-10-13T10:24:00",
+            "Photo" : "images/recipe.jpg"
+        }, {
+            "Name" : "Went to the new art exhibit at GOMA, you guys should check it out!",
+            "CreatedBy" : 15,
+            "Time" :"2021-10-21T10:24:00",
             "Photo" : "images/recipe.jpg"
         }
     ],

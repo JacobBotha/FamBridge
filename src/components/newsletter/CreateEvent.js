@@ -30,7 +30,7 @@ export default function CreateEvent(props) {
 
     const submitEvent = () => {
         console.log(startTime);
-        if (eventName === null && !proposeEvent) {
+        if (eventName === "" && !proposeEvent) {
             setErrorMessage("Your status update is blank!")
             return;
         }
@@ -164,7 +164,7 @@ export default function CreateEvent(props) {
                     <div className="propose-event">
                         <p className="text-style">Propose an event?</p>
                         <label class="switch">
-                            <input type="checkbox" onClick={() => setProposeEvent(!proposeEvent)}></input>
+                            <input type="checkbox" value={proposeEvent} onClick={() => setProposeEvent(!proposeEvent)}></input>
                             <span class="slider round"></span>
                         </label>
                     </div>

@@ -68,10 +68,11 @@ export default function Event(props) {
                 going += ", " + friend[0].Name;
             }
         }
+        console.log(persons);
 
         if (persons.length === 1) {
             going += " is going!";
-        } else {
+        } else if(persons.length > 1) {
             going += " are going!";
         }
 
