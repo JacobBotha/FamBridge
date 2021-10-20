@@ -104,7 +104,7 @@ export default function Call(props) {
                             <div>
                                 <h4 style={{textDecoration: "underline"}}>{friend.Name}</h4>
                                 <p>Interests: {friend.Interests.join(", ")}</p>
-                                <p>{ (friendActivities.length >= 1) ? "Recent Activities: " : ""}</p>{friendActivities.map((activity) => <p>{activity}</p>)}
+                                <p>{ (friendActivities.length >= 1) ? "Recent Activities: " : ""}</p>{friendActivities.map((activity) => <p style={{marginLeft:"5px"}}>{activity}</p>)}
                             </div>
                         )
                     })}
