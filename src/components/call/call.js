@@ -95,14 +95,16 @@ export default function Call(props) {
                         let friendActivities = [];
                         props.activities.forEach((activity) => {
                             if (activity.CreatedBy === friend.Id) {
-                                friendActivities.push(activity);
+                                friendActivities.push(activity.Name);
                             }
                         });
+                        // friendActivities = friendActivities.join(", ");
+
                         return (
                             <div>
                                 <h4 style={{textDecoration: "underline"}}>{friend.Name}</h4>
                                 <p>Interests: {friend.Interests.join(", ")}</p>
-                                <p>{ (friendActivities.length >= 1) ? "Recent Activities: " : ""}{friendActivities.map((activity) => activity.Name)}</p> 
+                                <p>{ (friendActivities.length >= 1) ? "Recent Activities: " : ""}</p>{friendActivities.map((activity) => <p>{activity}</p>)}
                             </div>
                         )
                     })}
