@@ -1,0 +1,132 @@
+.calModal{
+	/* width:65%;
+	height:55%;
+	background-color:#F9F9F9;
+	padding:3vw;
+	margin-left:5.5vw;
+	border-radius: 16px;
+	margin-top:5vw;*/
+    width: 80%;
+    max-width: 640px;
+    height: auto;
+    max-height: 90%;
+    background-color: rgba(249, 249, 249, 1);
+    margin: 0 auto;
+    z-index: 1;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+} 
+
+#half-screen-remove-later{
+	width:50%;
+	height:100%;
+	background-color:#585454;
+	padding-top:5vw;
+	opacity: 0.8;
+
+	/*margin-top:5vw;*/
+}
+
+h1{
+	font-size:4vw;
+	font-weight:bold;
+	line-height:1.5vw;
+}
+
+
+#calModalDateText{
+	color:#1D77FF;
+}
+
+#locationText{
+	line-height:0vw;
+}
+
+#locationText, #timeText, #calModelArrows{
+	text-align:right;
+	color:#4D4D4D;
+}
+
+#calModelArrows{
+	margin-top:-1.5vw;
+}
+
+.calModalArrowsActive {
+    cursor: pointer;
+}
+
+.calModalArrowsInactive {
+    opacity: 40%;
+}
+
+#calModelArrows img{
+	width:3vw;
+}
+
+#locationText{
+	font-size:1vw;
+}
+
+
+.calModalJoin{
+	width:60%;
+	border-radius:8px;
+	padding-top:1vw;
+	padding-bottom:1vw;
+	/*font-weight:bold;*/
+	font-size:1.5vw;
+	border:none;
+	margin-bottom:40px;
+    border: 1px solid rgba(34, 34, 34, 0.4);
+    cursor: pointer;
+}
+
+.calModalJoined{
+	width:60%;
+	border-radius:8px;
+	padding-top:1vw;
+	padding-bottom:1vw;
+	background-color:#1D77FF;
+	color:white;
+    cursor: pointer;
+	/*font-weight:bold;*/
+	font-size:1.5vw;
+	border:none;
+	margin-bottom:40px;
+}
+
+#calModalHeading{
+	border-bottom:0.1vw solid #999999;
+	margin-bottom:1.5vw;
+    width: 90%;
+}
+
+#participantsText{
+	line-height:0.25vw;
+	font-weight:none;
+	font-size:1vw;
+}
+
+.closeEvent {
+  width:5%;
+  height:5%;
+  margin-left:90%;
+  margin-top:1vw;
+  cursor: pointer;
+}
+
+.eventGoingPersonImg {
+    width: 70px;
+    height: 70px;
+    border: 4px solid #1D77FF;
+    margin: 5px;
+}
+
+.calEventsParticipants {
+    display: flex;
+    flex-direction: row;
+    align-self: left;
+}

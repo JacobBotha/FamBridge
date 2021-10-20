@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Event from './event';
 import './calendar.css'
 
 const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -7,6 +8,24 @@ const days = ['Su', 'M', 'T', 'W', 'T', 'F', 'Sa'];
 export default function Calendar(props) {
     const [month, setMonth] = useState(9);
     const [year, setYear] = useState(2021);
+    const [today, setToday] = useState(0);
+    const [selected, setSelected] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+
+    const openEvent = (events, date) => {
+        if (events.length === 0) {
+            setShowModal(false);
+        } else {
+            setShowModal(true);
+            setSelected(events);
+            setToday(date);
+        }
+    }
+
+    const closeEvent = () => {
+        setSelected([]);
+        setShowModal(false);
+    }
 
     const weekRow = (startDate, maxDate) => {
         let dayCards = []
@@ -52,9 +71,7 @@ export default function Calendar(props) {
         return weeksHtml;
     }
         
-    const badge = () => {
-        return (<span className="event-badge"></span>)
-    }
+    const badge = <span className="event-badge"></span>
 
     const dayCard = (date, dayClass, id) => { 
         let eventToday = props.events.filter((event) => {
@@ -70,6 +87,9 @@ export default function Calendar(props) {
             )
         });
 
+        let today = new Date()
+        let isToday = (date === today.getDate() && month === today.getMonth() && year === today.getFullYear());
+
         let includeBadge = false;
         
         if (eventToday.length > 0) {
@@ -77,8 +97,8 @@ export default function Calendar(props) {
             console.log("Include Badge for ", date, " ", true);
         }
         return (
-            <div className={includeBadge ? "pointer-date date" : "date"} key={id}>
-                {includeBadge ? badge() : null}
+            <div onClick={() => openEvent(eventToday, date)} style={isToday ? {fontSize: "2em"} : null} className={includeBadge ? "pointer-date date" : "date"} key={id}>
+                {includeBadge ? badge : null}
                 <b id={dayClass}>{date}</b>
             </div>
         )
@@ -122,6 +142,9 @@ export default function Calendar(props) {
                     )})}
                 </div>
                 {weeksList()}
+                <div className={showModal ? null : "hidden"}>
+                    <Event handleJoinEvent={(e) => props.handleJoinEvent(e)} month={month} date={today} closeEvent={closeEvent} events={selected} friends={props.friends}></Event>
+                </div>
         </div>
     )
 }

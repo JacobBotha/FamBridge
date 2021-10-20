@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-import StartCall from './startcall.js';
-import NewsletterBar from './NewsletterBar.js';
-import Newsletter from './Newsletter';
-import Calendar from './Calendar';
-import Breadcrumb from './Breadcrumb.js';
+import StartCall from './startCall/startcall.js';
+import NewsletterBar from './newsletter/NewsletterBar.js';
+import Newsletter from './newsletter/Newsletter';
+import Calendar from './calendar/Calendar';
+import Breadcrumb from './newsletter/Breadcrumb.js';
 import Call from './call/call.js';
 
 import myData from '../data.json';
@@ -154,7 +154,7 @@ export default function Layout(props) {
     }
 
     if (current === 'Calendar') {
-      return <Calendar events={events}></Calendar>;
+      return <Calendar handleJoinEvent={(e) => handleJoinEvent(e)} friends={myData.Friends} events={events}></Calendar>;
     }
   };
 
