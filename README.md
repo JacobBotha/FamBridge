@@ -1,4 +1,5 @@
 # FamBridge
+![cover](https://user-images.githubusercontent.com/92564190/138195329-8efea9d5-5b24-432a-9f04-c89aab3aa103.png)
 This is a demo for Team Meerkats demo Fambridge. This prototype is for connecting family and friends while implementing a simplistic, easy to use design.
 
 To view the demo, go to the fambridge website: https://fambridge.vercel.app/
